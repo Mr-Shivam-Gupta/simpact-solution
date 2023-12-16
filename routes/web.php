@@ -21,7 +21,7 @@ Route::get('/', [SimpactController::class, 'index']);
 Route::get('home', [SimpactController::class, 'index']);
 Route::get('/about', [SimpactController::class, 'about']);
 Route::get('/aboutus', [SimpactController::class, 'aboutus1']);
-Route::get('/faq', [SimpactController::class, 'faq1']);
+// Route::get('/faq', [SimpactController::class, 'faq1']);
 
 Route::get('/blog', [SimpactController::class, 'blog']);
 Route::get('/blog/{id}/view', [SimpactController::class, 'blogPreview']);
@@ -34,14 +34,14 @@ Route::get('/blog/{id}/view', [SimpactController::class, 'blogPreview']);
 //Route::get('/blog6', [SimpactController::class, 'blog6']);
 
 Route::get('/price', [SimpactController::class, 'price1']);
-Route::get('/products', [SimpactController::class, 'products1']);
-Route::get('/product1', [SimpactController::class, 'product1']);
-Route::get('/product2', [SimpactController::class, 'product2']);
-Route::get('/product3', [SimpactController::class, 'product3']);
-Route::get('/product4', [SimpactController::class, 'product4']);
-Route::get('/product5', [SimpactController::class, 'product5']);
-Route::get('/product6', [SimpactController::class, 'product6']);
-Route::get('/exploremore', [SimpactController::class, 'exploremore1']);
+Route::any('/products', [SimpactController::class, 'products1']);
+// Route::get('/product1', [SimpactController::class, 'product1']);
+// Route::get('/product2', [SimpactController::class, 'product2']);
+// Route::get('/product3', [SimpactController::class, 'product3']);
+// Route::get('/product4', [SimpactController::class, 'product4']);
+// Route::get('/product5', [SimpactController::class, 'product5']);
+// Route::get('/product6', [SimpactController::class, 'product6']);
+// Route::get('/exploremore', [SimpactController::class, 'exploremore1']);
 Route::get('/services', [SimpactController::class, 'services1']);
 Route::get('/contact', [SimpactController::class, 'contact1']);
 Route::post('/contact-form', [SimpactController::class, 'contactForm']);
@@ -51,6 +51,10 @@ Route::post('/contact-form', [SimpactController::class, 'contactForm']);
 // Route::any('/login-form', [SimpactController::class, 'loginForm']);
 Route::any('/google-login', [SimpactController::class, 'googleLogin']);
 Route::get('/auth/google/callback', [SimpactController::class, 'googleHandle']);
+
+Route::post('check-domain', [SimpactController::class, 'checkDomain']);
+
+Route::post('add-customers', [SimpactController::class, 'customers']);
 
 
 

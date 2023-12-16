@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use SimpleXMLElement;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use App\Models\User;
 use App\Models\Registration;
 use App\Models\blogs;
@@ -38,19 +40,19 @@ class simpactController extends Controller
    {
       $data['title'] = 'About | Simpact Solutions - Web Design, Development, SEO, and IT Solutions';
       $data['canonical'] = 'https://mlmcreatorsindia.com/about';
-      $data['keywords'] = 'Web Design, Web Development, SEO Services, Software Development, IT Solutions, Raipur IT Company, Website Designers, Web Developers, Search Engine Optimization, Software Solutions, E-commerce Development, Mobile App Development, Responsive Web Design, Custom Software, CMS (Content Management System), Web Hosting, UI/UX Design, Website Maintenance, Raipur Software Company, Web Design and SEO, Software Engineering, IT Support, Website Security, App Store Optimization (ASO), Raipur Technology Experts.';
+      $data['keywords'] = 'Web Design, Web Development, SEO Services, Software Development, IT Solutions, Raipur IT Company, Website Designers, Web Developers, Search Engine Optimization, Software Solutions, Mobile App Development, Web Hosting, UI/UX Design, Website Maintenance, Raipur Software Company,  SEO,  IT Support, Website Security, Raipur Technology Experts.';
       $data['description'] = 'Learn more about Simpact Solutions - your trusted technology experts in Raipur. Discover our expertise in Web Design, Web Development, SEO Services, Software Development, and IT Solutions.';
       return view('about', $data);
    }
 
-   public function faq1()
-   {
-      $data['title'] = 'FAQ | Simpact Solutions - Web Design, Development, SEO, and IT Solutions';
-      $data['canonical'] = 'https://mlmcreatorsindia.com/faq';
-      $data['keywords'] = 'Web Design, Web Development, SEO Services, Software Development, IT Solutions, Raipur IT Company, Website Designers, Web Developers, Search Engine Optimization, Software Solutions, E-commerce Development, Mobile App Development, Responsive Web Design, Custom Software, CMS (Content Management System), Web Hosting, UI/UX Design, Website Maintenance, Raipur Software Company, Web Design and SEO, Software Engineering, IT Support, Website Security, App Store Optimization (ASO), Raipur Technology Experts.';
-      $data['description'] = 'Find answers to commonly asked questions about Simpact Solutions, including information about our services, expertise, and more.';
-      return view('faq', $data);
-   }
+   // public function faq1()
+   // {
+   //    $data['title'] = 'FAQ | Simpact Solutions - Web Design, Development, SEO, and IT Solutions';
+   //    $data['canonical'] = 'https://mlmcreatorsindia.com/faq';
+   //    $data['keywords'] = 'Web Design, Web Development, SEO Services, Software Development, IT Solutions, Raipur IT Company, Website Designers, Web Developers, Search Engine Optimization, Software Solutions, E-commerce Development, Mobile App Development, Responsive Web Design, Custom Software, CMS (Content Management System), Web Hosting, UI/UX Design, Website Maintenance, Raipur Software Company, Web Design and SEO, Software Engineering, IT Support, Website Security, App Store Optimization (ASO), Raipur Technology Experts.';
+   //    $data['description'] = 'Find answers to commonly asked questions about Simpact Solutions, including information about our services, expertise, and more.';
+   //    return view('faq', $data);
+   // }
    public function blog()
    {
       $data['title'] = 'Blog | Simpact Solutions - Web Design, Development, SEO, and IT Solutions';
@@ -129,121 +131,341 @@ class simpactController extends Controller
       $data['description'] = 'Discover our featured products at Simpact Solutions. Explore our high-quality offerings, including web design tools, development software, SEO services, and IT solutions. Find the right products to elevate your online presence.';
       return view('products', $data);
    }
-   public function aboutus1()
-   {
-      $data['title'] = 'About-Us | Simpact Solutions  ';
-      $data['canonical'] = 'https://mlmcreatorsindia.com/aboutus';
-      $data['keywords'] = 'Web Design, Web Development, SEO Services, Software Development, IT Solutions, Raipur IT Company, Website Designers, Web Developers, Search Engine Optimization, Software Solutions, E-commerce Development, Mobile App Development, Responsive Web Design, Custom Software, CMS (Content Management System), Web Hosting, UI/UX Design, Website Maintenance, Raipur Software Company, Web Design and SEO, Software Engineering, IT Support, Website Security, App Store Optimization (ASO), Raipur Technology Experts.';
-      $data['description'] = 'Learn more about Simpact Solutions - your trusted technology experts in Raipur. Discover our expertise in Web Design, Web Development, SEO Services, Software Development, and IT Solutions';
-      return view('aboutus', $data);
-   }
+   // public function aboutus1()
+   // {
+   //    $data['title'] = 'About-Us | Simpact Solutions  ';
+   //    $data['canonical'] = 'https://mlmcreatorsindia.com/aboutus';
+   //    $data['keywords'] = 'Web Design, Web Development, SEO Services, Software Development, IT Solutions, Raipur IT Company, Website Designers, Web Developers, Search Engine Optimization, Software Solutions, E-commerce Development, Mobile App Development, Responsive Web Design, Custom Software, CMS (Content Management System), Web Hosting, UI/UX Design, Website Maintenance, Raipur Software Company, Web Design and SEO, Software Engineering, IT Support, Website Security, App Store Optimization (ASO), Raipur Technology Experts.';
+   //    $data['description'] = 'Learn more about Simpact Solutions - your trusted technology experts in Raipur. Discover our expertise in Web Design, Web Development, SEO Services, Software Development, and IT Solutions';
+   //    return view('aboutus', $data);
+   // }
 
-   public function blog1()
-   {
-      $data['title'] = 'Blog | Simpact Solutions - Web Design, Development, SEO, and IT Solutions';
-      $data['canonical'] = 'https://mlmcreatorsindia.com/blog1';
-      $data['keywords'] = 'Web Design, Web Development, SEO Services, Software Development, IT Solutions, Raipur IT Company, Website Designers, Web Developers, Search Engine Optimization, Software Solutions, E-commerce Development, Mobile App Development, Responsive Web Design, Custom Software, CMS (Content Management System), Web Hosting, UI/UX Design, Website Maintenance, Raipur Software Company, Web Design and SEO, Software Engineering, IT Support, Website Security, App Store Optimization (ASO), Raipur Technology Experts.';
-      $data['description'] = 'Explore our latest blog posts at Simpact Solutions. Stay updated with insightful articles on web design, development, SEO, software, IT solutions, and more.';
-      return view('blogdetails.blog1', $data);
-   }
-   public function blog2()
-   {
-      $data['title'] = 'Blog | Simpact Solutions - Web Design, Development, SEO, and IT Solutions';
-      $data['canonical'] = 'https://mlmcreatorsindia.com/blog2';
-      $data['keywords'] = 'Web Design, Web Development, SEO Services, Software Development, IT Solutions, Raipur IT Company, Website Designers, Web Developers, Search Engine Optimization, Software Solutions, E-commerce Development, Mobile App Development, Responsive Web Design, Custom Software, CMS (Content Management System), Web Hosting, UI/UX Design, Website Maintenance, Raipur Software Company, Web Design and SEO, Software Engineering, IT Support, Website Security, App Store Optimization (ASO), Raipur Technology Experts.';
-      $data['description'] = 'Explore our latest blog posts at Simpact Solutions. Stay updated with insightful articles on web design, development, SEO, software, IT solutions, and more.';
-      return view('blogdetails.blog2', $data);
-   }
-   public function blog3()
-   {
-      $data['title'] = 'Blog | Simpact Solutions - Web Design, Development, SEO, and IT Solutions';
-      $data['canonical'] = 'https://mlmcreatorsindia.com/blog3';
-      $data['keywords'] = 'Web Design, Web Development, SEO Services, Software Development, IT Solutions, Raipur IT Company, Website Designers, Web Developers, Search Engine Optimization, Software Solutions, E-commerce Development, Mobile App Development, Responsive Web Design, Custom Software, CMS (Content Management System), Web Hosting, UI/UX Design, Website Maintenance, Raipur Software Company, Web Design and SEO, Software Engineering, IT Support, Website Security, App Store Optimization (ASO), Raipur Technology Experts.';
-      $data['description'] = 'Explore our latest blog posts at Simpact Solutions. Stay updated with insightful articles on web design, development, SEO, software, IT solutions, and more.';
-      return view('blogdetails.blog3', $data);
-   }
-   public function blog4()
-   {
-      $data['title'] = 'Blog | Simpact Solutions - Web Design, Development, SEO, and IT Solutions';
-      $data['canonical'] = 'https://mlmcreatorsindia.com/blog4';
-      $data['keywords'] = 'Web Design, Web Development, SEO Services, Software Development, IT Solutions, Raipur IT Company, Website Designers, Web Developers, Search Engine Optimization, Software Solutions, E-commerce Development, Mobile App Development, Responsive Web Design, Custom Software, CMS (Content Management System), Web Hosting, UI/UX Design, Website Maintenance, Raipur Software Company, Web Design and SEO, Software Engineering, IT Support, Website Security, App Store Optimization (ASO), Raipur Technology Experts.';
-      $data['description'] = 'Explore our latest blog posts at Simpact Solutions. Stay updated with insightful articles on web design, development, SEO, software, IT solutions, and more.';
-      return view('blogdetails.blog4', $data);
-   }
-   public function blog5()
-   {
-      $data['title'] = 'Blog | Simpact Solutions  ';
-      $data['canonical'] = 'https://mlmcreatorsindia.com/blog5';
-      $data['keywords'] = 'Web Design, Web Development, SEO Services, Software Development, IT Solutions, Raipur IT Company, Website Designers, Web Developers, Search Engine Optimization, Software Solutions, E-commerce Development, Mobile App Development, Responsive Web Design, Custom Software, CMS (Content Management System), Web Hosting, UI/UX Design, Website Maintenance, Raipur Software Company, Web Design and SEO, Software Engineering, IT Support, Website Security, App Store Optimization (ASO), Raipur Technology Experts.';
-      $data['description'] = 'Explore our latest blog posts at Simpact Solutions. Stay updated with insightful articles on web design, development, SEO, software, IT solutions, and more.';
-      return view('blogdetails.blog5', $data);
-   }
-   public function blog6()
-   {
-      $data['title'] = 'Blog | Simpact Solutions - Web Design, Development, SEO, and IT Solutions';
-      $data['canonical'] = 'https://mlmcreatorsindia.com/blog6';
-      $data['keywords'] = 'Web Design, Web Development, SEO Services, Software Development, IT Solutions, Raipur IT Company, Website Designers, Web Developers, Search Engine Optimization, Software Solutions, E-commerce Development, Mobile App Development, Responsive Web Design, Custom Software, CMS (Content Management System), Web Hosting, UI/UX Design, Website Maintenance, Raipur Software Company, Web Design and SEO, Software Engineering, IT Support, Website Security, App Store Optimization (ASO), Raipur Technology Experts.';
-      $data['description'] = 'Explore our latest blog posts at Simpact Solutions. Stay updated with insightful articles on web design, development, SEO, software, IT solutions, and more.';
-      return view('blogdetails.blog6', $data);
-   }
-   public function product1()
-   {
-      $data['title'] = 'Products | Simpact Solutions - Web Design, Development, SEO, and IT Solutions';
-      $data['canonical'] = 'https://mlmcreatorsindia.com/product1';
-      $data['keywords'] = 'Web Design, Web Development, SEO Services, Software Development, IT Solutions, Raipur IT Company, Website Designers, Web Developers, Search Engine Optimization, Software Solutions, E-commerce Development, Mobile App Development, Responsive Web Design, Custom Software, CMS (Content Management System), Web Hosting, UI/UX Design, Website Maintenance, Raipur Software Company, Web Design and SEO, Software Engineering, IT Support, Website Security, App Store Optimization (ASO), Raipur Technology Experts.';
-      $data['description'] = 'Discover our featured products at Simpact Solutions. Explore our high-quality offerings, including web design tools, development software, SEO services, and IT solutions. Find the right products to elevate your online presence.';
-      return view('productdetails.product1', $data);
-   }
-   public function product2()
-   {
-      $data['title'] = 'Products | Simpact Solutions  ';
-      $data['canonical'] = 'https://mlmcreatorsindia.com/product2';
-      $data['keywords'] = 'Web Design, Web Development, SEO Services, Software Development, IT Solutions, Raipur IT Company, Website Designers, Web Developers, Search Engine Optimization, Software Solutions, E-commerce Development, Mobile App Development, Responsive Web Design, Custom Software, CMS (Content Management System), Web Hosting, UI/UX Design, Website Maintenance, Raipur Software Company, Web Design and SEO, Software Engineering, IT Support, Website Security, App Store Optimization (ASO), Raipur Technology Experts.';
-      $data['description'] = 'desc';
-      return view('productdetails.product2', $data);
-   }
-   public function product3()
-   {
-      $data['title'] = 'Products | Simpact Solutions - Web Design, Development, SEO, and IT Solutions';
-      $data['canonical'] = 'https://mlmcreatorsindia.com/product3';
-      $data['keywords'] = 'Web Design, Web Development, SEO Services, Software Development, IT Solutions, Raipur IT Company, Website Designers, Web Developers, Search Engine Optimization, Software Solutions, E-commerce Development, Mobile App Development, Responsive Web Design, Custom Software, CMS (Content Management System), Web Hosting, UI/UX Design, Website Maintenance, Raipur Software Company, Web Design and SEO, Software Engineering, IT Support, Website Security, App Store Optimization (ASO), Raipur Technology Experts.';
-      $data['description'] = 'Discover our featured products at Simpact Solutions. Explore our high-quality offerings, including web design tools, development software, SEO services, and IT solutions. Find the right products to elevate your online presence.';
-      return view('productdetails.product3', $data);
-   }
-   public function product4()
-   {
-      $data['title'] = 'Products | Simpact Solutions';
-      $data['canonical'] = 'https://mlmcreatorsindia.com/product4';
-      $data['keywords'] = 'Web Design, Web Development, SEO Services, Software Development, IT Solutions, Raipur IT Company, Website Designers, Web Developers, Search Engine Optimization, Software Solutions, E-commerce Development, Mobile App Development, Responsive Web Design, Custom Software, CMS (Content Management System), Web Hosting, UI/UX Design, Website Maintenance, Raipur Software Company, Web Design and SEO, Software Engineering, IT Support, Website Security, App Store Optimization (ASO), Raipur Technology Experts.';
-      $data['description'] = 'Discover our featured products at Simpact Solutions. Explore our high-quality offerings, including web design tools, development software, SEO services, and IT solutions. Find the right products to elevate your online presence.';
-      return view('productdetails.product4', $data);
-   }
-   public function product5()
-   {
-      $data['title'] = 'Products | Simpact Solutions';
-      $data['canonical'] = 'https://mlmcreatorsindia.com/product5';
-      $data['keywords'] = 'Web Design, Web Development, SEO Services, Software Development, IT Solutions, Raipur IT Company, Website Designers, Web Developers, Search Engine Optimization, Software Solutions, E-commerce Development, Mobile App Development, Responsive Web Design, Custom Software, CMS (Content Management System), Web Hosting, UI/UX Design, Website Maintenance, Raipur Software Company, Web Design and SEO, Software Engineering, IT Support, Website Security, App Store Optimization (ASO), Raipur Technology Experts.';
-      $data['description'] = 'Discover our featured products at Simpact Solutions. Explore our high-quality offerings, including web design tools, development software, SEO services, and IT solutions. Find the right products to elevate your online presence.';
-      return view('productdetails.product5', $data);
-   }
-   public function product6()
-   {
-      $data['title'] = 'Products | Simpact Solutions';
-      $data['canonical'] = 'https://mlmcreatorsindia.com/product6';
-      $data['keywords'] = 'Web Design, Web Development, SEO Services, Software Development, IT Solutions, Raipur IT Company, Website Designers, Web Developers, Search Engine Optimization, Software Solutions, E-commerce Development, Mobile App Development, Responsive Web Design, Custom Software, CMS (Content Management System), Web Hosting, UI/UX Design, Website Maintenance, Raipur Software Company, Web Design and SEO, Software Engineering, IT Support, Website Security, App Store Optimization (ASO), Raipur Technology Experts.';
-      $data['description'] = 'Discover our featured products at Simpact Solutions. Explore our high-quality offerings, including web design tools, development software, SEO services, and IT solutions. Find the right products to elevate your online presence.';
-      return view('productdetails.product6', $data);
-   }
-   public function exploremore1()
-   {
-      $data['title'] = 'Simpact Solutions - Web Design, Development, SEO, and IT Solutions';
-      $data['canonical'] = 'https://mlmcreatorsindia.com/';
-      $data['keywords'] = 'Web Design, Web Development, SEO Services, Software Development, IT Solutions, Raipur IT Company, Website Designers, Web Developers, Search Engine Optimization, Software Solutions, E-commerce Development, Mobile App Development, Responsive Web Design, Custom Software, CMS (Content Management System), Web Hosting, UI/UX Design, Website Maintenance, Raipur Software Company, Web Design and SEO, Software Engineering, IT Support, Website Security, App Store Optimization (ASO), Raipur Technology Experts.';
-      $data['description'] = 'desc';
-      return view('exploremore', $data);
-   }
+   // public function blog1()
+   // {
+   //    $data['title'] = 'Blog | Simpact Solutions - Web Design, Development, SEO, and IT Solutions';
+   //    $data['canonical'] = 'https://mlmcreatorsindia.com/blog1';
+   //    $data['keywords'] = 'Web Design, Web Development, SEO Services, Software Development, IT Solutions, Raipur IT Company, Website Designers, Web Developers, Search Engine Optimization, Software Solutions, E-commerce Development, Mobile App Development, Responsive Web Design, Custom Software, CMS (Content Management System), Web Hosting, UI/UX Design, Website Maintenance, Raipur Software Company, Web Design and SEO, Software Engineering, IT Support, Website Security, App Store Optimization (ASO), Raipur Technology Experts.';
+   //    $data['description'] = 'Explore our latest blog posts at Simpact Solutions. Stay updated with insightful articles on web design, development, SEO, software, IT solutions, and more.';
+   //    return view('blogdetails.blog1', $data);
+   // }
+   // public function blog2()
+   // {
+   //    $data['title'] = 'Blog | Simpact Solutions - Web Design, Development, SEO, and IT Solutions';
+   //    $data['canonical'] = 'https://mlmcreatorsindia.com/blog2';
+   //    $data['keywords'] = 'Web Design, Web Development, SEO Services, Software Development, IT Solutions, Raipur IT Company, Website Designers, Web Developers, Search Engine Optimization, Software Solutions, E-commerce Development, Mobile App Development, Responsive Web Design, Custom Software, CMS (Content Management System), Web Hosting, UI/UX Design, Website Maintenance, Raipur Software Company, Web Design and SEO, Software Engineering, IT Support, Website Security, App Store Optimization (ASO), Raipur Technology Experts.';
+   //    $data['description'] = 'Explore our latest blog posts at Simpact Solutions. Stay updated with insightful articles on web design, development, SEO, software, IT solutions, and more.';
+   //    return view('blogdetails.blog2', $data);
+   // }
+   // public function blog3()
+   // {
+   //    $data['title'] = 'Blog | Simpact Solutions - Web Design, Development, SEO, and IT Solutions';
+   //    $data['canonical'] = 'https://mlmcreatorsindia.com/blog3';
+   //    $data['keywords'] = 'Web Design, Web Development, SEO Services, Software Development, IT Solutions, Raipur IT Company, Website Designers, Web Developers, Search Engine Optimization, Software Solutions, E-commerce Development, Mobile App Development, Responsive Web Design, Custom Software, CMS (Content Management System), Web Hosting, UI/UX Design, Website Maintenance, Raipur Software Company, Web Design and SEO, Software Engineering, IT Support, Website Security, App Store Optimization (ASO), Raipur Technology Experts.';
+   //    $data['description'] = 'Explore our latest blog posts at Simpact Solutions. Stay updated with insightful articles on web design, development, SEO, software, IT solutions, and more.';
+   //    return view('blogdetails.blog3', $data);
+   // }
+   // public function blog4()
+   // {
+   //    $data['title'] = 'Blog | Simpact Solutions - Web Design, Development, SEO, and IT Solutions';
+   //    $data['canonical'] = 'https://mlmcreatorsindia.com/blog4';
+   //    $data['keywords'] = 'Web Design, Web Development, SEO Services, Software Development, IT Solutions, Raipur IT Company, Website Designers, Web Developers, Search Engine Optimization, Software Solutions, E-commerce Development, Mobile App Development, Responsive Web Design, Custom Software, CMS (Content Management System), Web Hosting, UI/UX Design, Website Maintenance, Raipur Software Company, Web Design and SEO, Software Engineering, IT Support, Website Security, App Store Optimization (ASO), Raipur Technology Experts.';
+   //    $data['description'] = 'Explore our latest blog posts at Simpact Solutions. Stay updated with insightful articles on web design, development, SEO, software, IT solutions, and more.';
+   //    return view('blogdetails.blog4', $data);
+   // }
+   // public function blog5()
+   // {
+   //    $data['title'] = 'Blog | Simpact Solutions  ';
+   //    $data['canonical'] = 'https://mlmcreatorsindia.com/blog5';
+   //    $data['keywords'] = 'Web Design, Web Development, SEO Services, Software Development, IT Solutions, Raipur IT Company, Website Designers, Web Developers, Search Engine Optimization, Software Solutions, E-commerce Development, Mobile App Development, Responsive Web Design, Custom Software, CMS (Content Management System), Web Hosting, UI/UX Design, Website Maintenance, Raipur Software Company, Web Design and SEO, Software Engineering, IT Support, Website Security, App Store Optimization (ASO), Raipur Technology Experts.';
+   //    $data['description'] = 'Explore our latest blog posts at Simpact Solutions. Stay updated with insightful articles on web design, development, SEO, software, IT solutions, and more.';
+   //    return view('blogdetails.blog5', $data);
+   // }
+   // public function blog6()
+   // {
+   //    $data['title'] = 'Blog | Simpact Solutions - Web Design, Development, SEO, and IT Solutions';
+   //    $data['canonical'] = 'https://mlmcreatorsindia.com/blog6';
+   //    $data['keywords'] = 'Web Design, Web Development, SEO Services, Software Development, IT Solutions, Raipur IT Company, Website Designers, Web Developers, Search Engine Optimization, Software Solutions, E-commerce Development, Mobile App Development, Responsive Web Design, Custom Software, CMS (Content Management System), Web Hosting, UI/UX Design, Website Maintenance, Raipur Software Company, Web Design and SEO, Software Engineering, IT Support, Website Security, App Store Optimization (ASO), Raipur Technology Experts.';
+   //    $data['description'] = 'Explore our latest blog posts at Simpact Solutions. Stay updated with insightful articles on web design, development, SEO, software, IT solutions, and more.';
+   //    return view('blogdetails.blog6', $data);
+   // }
+   // public function product1()
+   // {
+   //    $data['title'] = 'Products | Simpact Solutions - Web Design, Development, SEO, and IT Solutions';
+   //    $data['canonical'] = 'https://mlmcreatorsindia.com/product1';
+   //    $data['keywords'] = 'Web Design, Web Development, SEO Services, Software Development, IT Solutions, Raipur IT Company, Website Designers, Web Developers, Search Engine Optimization, Software Solutions, E-commerce Development, Mobile App Development, Responsive Web Design, Custom Software, CMS (Content Management System), Web Hosting, UI/UX Design, Website Maintenance, Raipur Software Company, Web Design and SEO, Software Engineering, IT Support, Website Security, App Store Optimization (ASO), Raipur Technology Experts.';
+   //    $data['description'] = 'Discover our featured products at Simpact Solutions. Explore our high-quality offerings, including web design tools, development software, SEO services, and IT solutions. Find the right products to elevate your online presence.';
+   //    return view('productdetails.product1', $data);
+   // }
+   // public function product2()
+   // {
+   //    $data['title'] = 'Products | Simpact Solutions  ';
+   //    $data['canonical'] = 'https://mlmcreatorsindia.com/product2';
+   //    $data['keywords'] = 'Web Design, Web Development, SEO Services, Software Development, IT Solutions, Raipur IT Company, Website Designers, Web Developers, Search Engine Optimization, Software Solutions, E-commerce Development, Mobile App Development, Responsive Web Design, Custom Software, CMS (Content Management System), Web Hosting, UI/UX Design, Website Maintenance, Raipur Software Company, Web Design and SEO, Software Engineering, IT Support, Website Security, App Store Optimization (ASO), Raipur Technology Experts.';
+   //    $data['description'] = 'desc';
+   //    return view('productdetails.product2', $data);
+   // }
+   // public function product3()
+   // {
+   //    $data['title'] = 'Products | Simpact Solutions - Web Design, Development, SEO, and IT Solutions';
+   //    $data['canonical'] = 'https://mlmcreatorsindia.com/product3';
+   //    $data['keywords'] = 'Web Design, Web Development, SEO Services, Software Development, IT Solutions, Raipur IT Company, Website Designers, Web Developers, Search Engine Optimization, Software Solutions, E-commerce Development, Mobile App Development, Responsive Web Design, Custom Software, CMS (Content Management System), Web Hosting, UI/UX Design, Website Maintenance, Raipur Software Company, Web Design and SEO, Software Engineering, IT Support, Website Security, App Store Optimization (ASO), Raipur Technology Experts.';
+   //    $data['description'] = 'Discover our featured products at Simpact Solutions. Explore our high-quality offerings, including web design tools, development software, SEO services, and IT solutions. Find the right products to elevate your online presence.';
+   //    return view('productdetails.product3', $data);
+   // }
+   // public function product4()
+   // {
+   //    $data['title'] = 'Products | Simpact Solutions';
+   //    $data['canonical'] = 'https://mlmcreatorsindia.com/product4';
+   //    $data['keywords'] = 'Web Design, Web Development, SEO Services, Software Development, IT Solutions, Raipur IT Company, Website Designers, Web Developers, Search Engine Optimization, Software Solutions, E-commerce Development, Mobile App Development, Responsive Web Design, Custom Software, CMS (Content Management System), Web Hosting, UI/UX Design, Website Maintenance, Raipur Software Company, Web Design and SEO, Software Engineering, IT Support, Website Security, App Store Optimization (ASO), Raipur Technology Experts.';
+   //    $data['description'] = 'Discover our featured products at Simpact Solutions. Explore our high-quality offerings, including web design tools, development software, SEO services, and IT solutions. Find the right products to elevate your online presence.';
+   //    return view('productdetails.product4', $data);
+   // }
+   // public function product5()
+   // {
+   //    $data['title'] = 'Products | Simpact Solutions';
+   //    $data['canonical'] = 'https://mlmcreatorsindia.com/product5';
+   //    $data['keywords'] = 'Web Design, Web Development, SEO Services, Software Development, IT Solutions, Raipur IT Company, Website Designers, Web Developers, Search Engine Optimization, Software Solutions, E-commerce Development, Mobile App Development, Responsive Web Design, Custom Software, CMS (Content Management System), Web Hosting, UI/UX Design, Website Maintenance, Raipur Software Company, Web Design and SEO, Software Engineering, IT Support, Website Security, App Store Optimization (ASO), Raipur Technology Experts.';
+   //    $data['description'] = 'Discover our featured products at Simpact Solutions. Explore our high-quality offerings, including web design tools, development software, SEO services, and IT solutions. Find the right products to elevate your online presence.';
+   //    return view('productdetails.product5', $data);
+   // }
+   // public function product6()
+   // {
+   //    $data['title'] = 'Products | Simpact Solutions';
+   //    $data['canonical'] = 'https://mlmcreatorsindia.com/product6';
+   //    $data['keywords'] = 'Web Design, Web Development, SEO Services, Software Development, IT Solutions, Raipur IT Company, Website Designers, Web Developers, Search Engine Optimization, Software Solutions, E-commerce Development, Mobile App Development, Responsive Web Design, Custom Software, CMS (Content Management System), Web Hosting, UI/UX Design, Website Maintenance, Raipur Software Company, Web Design and SEO, Software Engineering, IT Support, Website Security, App Store Optimization (ASO), Raipur Technology Experts.';
+   //    $data['description'] = 'Discover our featured products at Simpact Solutions. Explore our high-quality offerings, including web design tools, development software, SEO services, and IT solutions. Find the right products to elevate your online presence.';
+   //    return view('productdetails.product6', $data);
+   // }
+   // public function exploremore1()
+   // {
+   //    $data['title'] = 'Simpact Solutions - Web Design, Development, SEO, and IT Solutions';
+   //    $data['canonical'] = 'https://mlmcreatorsindia.com/';
+   //    $data['keywords'] = 'Web Design, Web Development, SEO Services, Software Development, IT Solutions, Raipur IT Company, Website Designers, Web Developers, Search Engine Optimization, Software Solutions, E-commerce Development, Mobile App Development, Responsive Web Design, Custom Software, CMS (Content Management System), Web Hosting, UI/UX Design, Website Maintenance, Raipur Software Company, Web Design and SEO, Software Engineering, IT Support, Website Security, App Store Optimization (ASO), Raipur Technology Experts.';
+   //    $data['description'] = 'desc';
+   //    return view('exploremore', $data);
+   // }
 
+   // public function premiumDomain($request)
+   // {
+  
       
+   // }
+   public function resellerContact(Request $request){
+    
+   }
+
+
+   // public function customers(Request $request){
+   //     $url = 'https://test.httpapi.com/api/customers/v2/signup.xml';
+   
+   //     $queryParams = [
+   //         'auth-userid' => 172238,
+   //         'api-key' => 'zphlhRJETuaSCbYNl0cJKF2Y0H7bX1hX',
+   //         'name' => 'shivam gupta ',
+   //         'username' => 'shivdadm@gmail.com',
+   //         'company' => 'simpact online serive',
+   //         'address-line-1' => 'santoshi nagar raipur ',
+   //         'city' =>'raipur ',
+   //         'zipcode' => '492001',
+   //         'country' => 'IN',
+   //         'state' => 'chhattisagarh',
+   //         'phone-cc' => '+91',
+   //         'phone' => '9669729320',
+   //         'passwd' => 'Tdddst@123456a',
+   //         'lang-pref' => 'en'
+   //       //   'name' => $request->input('name'),
+   //       //   'username' => $request->input('email'),
+   //       //   'company' => $request->input('companyname'),
+   //       //   'address-line-1' => $request->input('address1'),
+   //       //   'city' => $request->input('city'),
+   //       //   'zipcode' => $request->input('zip'),
+   //       //   'country' => $request->input('country'),
+   //       //   'state' => $request->input('state'),
+   //       //   'phone-cc' => $request->input('telnocc'),
+   //       //   'phone' => $request->input('telno'),
+   //       //   'passwd' => $request->input('passwd'),
+   //       //   'lang-pref' => 'en'
+   //     ];
+   //    //  dd($queryParams);
+   
+   //     // Add custom headers
+   //     $headers = [
+   //         'Content-Type' => 'application/xml',
+   //         'Access-Control-Allow-Origin' => '*',
+   //         'Access-Control-Allow-Methods' => 'POST',
+   //         'Access-Control-Allow-Headers' => 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
+   //     ];
+   
+   //     // Make the API request using POST method
+   //     $response = Http::withHeaders($headers)->post($url, $queryParams);
+   //     dd($response);
+   //     // Handle the response
+   //     if ($response->successful()) {
+   //         // Successful API call
+   //         $xmlResponse = $response->body();
+   //         // Process $xmlResponse as needed
+   
+   //         // Return a success message
+   //         return response()->json(['success' => true, 'message' => 'API request successful', 'data' => $xmlResponse]);
+   //     } 
+   //     else {
+   //         // Error in API call
+   //         $errorMessage = $response->body();
+   //         // Handle the error message
+   
+   //         // Return an error message
+   //         return response()->json(['success' => false, 'message' => 'API request failed', 'error' => $errorMessage]);
+   //     }
+   // }
+//    public function customers(Request $request){
+//     $url = 'https://test.httpapi.com/api/customers/v2/signup.xml';
+
+//     $queryParams = [
+//         'auth-userid' => 172238,
+//         'api-key' => 'zphlhRJETuaSCbYNl0cJKF2Y0H7bX1hX',
+//         'name' => 'shivam gupta',
+//         'username' => 'shivdadm@gmail.com',
+//         'company' => 'simpact online service',
+//         'address-line-1' => 'santoshi nagar raipur',
+//         'city' => 'raipur',
+//         'zipcode' => '492001',
+//         'country' => 'IN',
+//         'state' => 'chhattisgarh',
+//         'phone-cc' => '+91',
+//         'phone' => '9669729320',
+//         'passwd' => 'Tdddst@123456a',
+//         'lang-pref' => 'en'
+//     ];
+
+//     // Add custom headers
+//     $headers = [
+//         'Content-Type' => 'application/xml',
+//         'Access-Control-Allow-Origin' => '*',
+//         'Access-Control-Allow-Methods' => 'POST',
+//         'Access-Control-Allow-Headers' => 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
+//     ];
+
+//     // Make the API request using POST method
+//     $response = Http::withHeaders($headers)->post($url, $queryParams);
+
+//     // Handle the response
+//     if ($response->successful()) {
+//         // Successful API call
+//         $xmlResponse = $response->body();
+//         // Process $xmlResponse as needed
+
+//         // Return a success message
+//         return response()->json(['success' => true, 'message' => 'API request successful', 'data' => $xmlResponse]);
+//     } else {
+//         // Error in API call
+//         $errorMessage = $response->body();
+//         // Handle the error message
+
+//         // Return an error message
+//         return response()->json(['success' => false, 'message' => 'API request failed', 'error' => $errorMessage]);
+//     }
+// }
+public function customers(Request $request)
+{
+    $url = 'https://test.httpapi.com/api/customers/v2/signup.xml?auth-userid=172238&api-key=zphlhRJETuaSCbYNl0cJKF2Y0H7bX1hX&username=shivfdadm@gmail.com&passwd=Tdddst@123456a&name=shivam &company=simpact online serive&address-line-1=santoshi nagar raipur &city=raipur &state=chhattisagarh&country=IN&zipcode=492001&phone-cc=+91&phone=9669729320&lang-pref=en';
+
+    // Authentication parameters
+    $authParams = [
+        'auth-userid' => 172238,
+        'api-key' => 'zphlhRJETuaSCbYNl0cJKF2Y0H7bX1hX',
+    ];
+
+    // Other request parameters
+    $queryParams = [
+        'name' => 'shivam1gupta',
+        'username' => 'shivdad1m@gmail.com',
+        'company' => 'simpact online service',
+        'address-line-1' => 'santoshi nagar raipur',
+        'city' => 'raipur',
+        'zipcode' => '492001',
+        'country' => 'IN',
+        'state' => 'chhattisgarh',
+        'phone-cc' => '+91',
+        'phone' => '9669729320',
+        'passwd' => 'Tdddst@123456a',
+        'lang-pref' => 'en'
+    ];
+
+    // Combine authentication and request parameters
+    $allParams = array_merge($authParams, $queryParams);
+
+    // Add custom headers
+    $headers = [
+        'Content-Type' => 'application/xml',
+        'Access-Control-Allow-Origin' => '*',
+        'Access-Control-Allow-Methods' => 'GET, POST, OPTIONS',
+        'Access-Control-Allow-Headers' => 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
+    ];
+
+    // Make the API request using POST method and including authentication in the request body
+    $response = Http::post($url);
+   //  dd($response);
+    // Handle the response
+    if ($response->successful()) {
+        // Successful API call
+        $xmlResponse = $response->body();
+        // Process $xmlResponse as needed
+
+        // Return a success message
+        return response()->json(['success' => true, 'message' => 'API request successful', 'data' => $xmlResponse]);
+    } else {
+        // Error in API call
+        $errorMessage = $response->body();
+        // Handle the error message
+
+        // Return an error message
+        return response()->json(['success' => false, 'message' => 'API request failed', 'error' => $errorMessage]);
+    }
+}
+
+
+   public function checkDomain(Request $request)
+   {
+      $url1 = 'https://domaincheck.httpapi.com/api/domains/available.json';
+      $domain =$request->domain;
+      $tlds =$request->tlds;
+      $queryParams1 = [
+          'auth-userid' => '172238',
+          'api-key' => 'zphlhRJETuaSCbYNl0cJKF2Y0H7bX1hX',
+          'domain-name' => $domain,
+          'tlds' => $tlds,
+      ];
+      $response1 = Http::get($url1, $queryParams1);
+      $responseData1 = $response1->json();
+      // return response()->json(['check_domains' => $responseData1]);
+    
+      $url2 = 'https://domaincheck.httpapi.com/api/domains/premium/available.xml';
+      $queryParams2 = [
+          'auth-userid' => '172238',
+          'api-key' => 'zphlhRJETuaSCbYNl0cJKF2Y0H7bX1hX',
+          'domain-name' => $request->domain,
+          'key-word' => 'shivam',
+          'tlds' => $request->tlds,
+          'price-high' => '10000',
+          'no-of-results' => '20',
+      ];
+      $response2 = Http::get($url2,$queryParams2);
+      $xmlResponse = $response2->body();
+      $xml = new \SimpleXMLElement($xmlResponse);
+      $premiumDomains = [];
+      foreach ($xml->entry as $entry) {
+          $domain = (string)$entry->string[0];
+          $price = (float)$entry->string[1];
+          $premiumDomains[] = ['domain' => $domain, 'price' => $price];
+      }
+   
+      return response()->json(['check_domains' => $responseData1,'premium_domains' => $premiumDomains]);
+
+   }
+
+
+
+
 
    public function contactForm(Request $req)
    {
@@ -307,7 +529,7 @@ class simpactController extends Controller
    public function logout(){
       Session::flush();
       Auth::logout(); 
-    return redirect('/');
+    return redirect()->back();
    }
 
    public function googleLogin()

@@ -24,10 +24,10 @@
                                     } ?>">
     <meta name="robots" content="index,follow" />
 	<meta name="author" content="Simpact Solutions">
-	<meta name="language" content="English">
     <link rel="shortcut icon" href="{{asset('assets/images/logoIcon/s.ico')}}" type="image/x-icon">
     <link rel="canonical" href="<?php if ($canonical) {  echo $canonical; } else { echo 'https://mlmcreatorsindia.com/';  } ?>"/>
-    <meta http-equiv="content-language" content="en-gb" />
+    <meta name="language" content="en">
+    <meta http-equiv="content-language" content="en" />
     <meta http-equiv="content-script-type" content="text/javascript" />
     <meta http-equiv="content-style-type" content="text/css" />
     <meta http-equiv="window-target" content="_top" />
@@ -78,6 +78,7 @@
     <link media  rel="stylesheet" href="{{asset('assets/templates/basic/css/owl.min.css')}}">
     <link media  rel="stylesheet" href="{{asset('assets/templates/basic/css/main.css')}}">
     <link media  rel="stylesheet" href="{{asset('assets/templates/basic/css/color8bf4.css?color=7376E7&amp;secondColor=47498f')}}">
+    <script src="{{asset('assets/global/js/jquery-3.6.0.min.js')}}" ></script>
 </head>
 
 <body class="overflow-hidden">
@@ -113,11 +114,11 @@
     <div class="sticky-social">
         <ul class="social">
            <a href="javascript:void(0)" data-toggle="tooltip" style="position: absolute;left: 50px;"  data-placement="right" title="Hooray!"><i class="fa fa-caret-right" id="collaps_sticky_social" aria-hidden="true"></i></a>
-           <li><a target="_blank" href="#" tabindex="0"><i class="fab fa-facebook-f"></i></a></li>
+           <li><a target="_blank" href="https://www.facebook.com/profile.php?id=61553129525397" target="_blank" tabindex="0"><i class="fab fa-facebook-f"></i></a></li>
      
            <li><a target="_blank" href="#" tabindex="-1"><i class="fab fa-instagram"></i></a></li>
-           <li><a target="_blank" href="https://linkedin.com/" tabindex="0"><i class="fab fa-linkedin-in"></i></a></li>
-             <li><a target="_blank" href="https://twitter.com/" tabindex="0"><i class="fab fa-twitter"></i></a></li>
+           <li><a target="_blank" href="https://www.linkedin.com/company/simpact-online-services-pvt-ltd/" target="_blank" tabindex="0"><i class="fab fa-linkedin-in"></i></a></li>
+             <li><a target="_blank" href="https://maps.app.goo.gl/eucsg6Lp624qVK979" target="_blank" tabindex="0"><i class="fab fa-google"></i></a></li>
          </ul>
      </div>
      
@@ -129,7 +130,7 @@
 
 
 
-	<script src="{{asset('assets/global/js/jquery-3.6.0.min.js')}}" ></script>
+	
     <script src="{{asset('assets/templates/basic/js/isotope.pkgd.min.js')}}" defer></script>
     <script src="{{asset('assets/global/js/bootstrap.min.js')}}" defer></script>
     <script src="{{asset('assets/templates/basic/js/rafcounter.min.js')}}" defer></script>

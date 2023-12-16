@@ -1,6 +1,7 @@
 
 <x-guest-layout>
-   <style>
+
+	<style>
 .google-btn {
     display: flex;
     justify-content: center;

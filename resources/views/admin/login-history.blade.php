@@ -33,7 +33,7 @@
                         @php $locations = json_decode($log->location, true);  @endphp 
                         <tr>
                            <td data-label="SL"> {{ $i++ }} </td>
-                           <td data-label="Name">{{ $user->name }}</td>
+                           <td data-label="Name">{{ $log->name}}</td>
                            <td data-label="Ip Address">{{ $log->ip_address }}</td>
                            <td data-label="Browser">{{ $log->browser }}</td>
                            <td data-label="Location">@if($locations) {{ $locations['cityName']; }} @endif</td>

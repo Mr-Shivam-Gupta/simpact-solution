@@ -55,9 +55,20 @@
                    <li><a href="{{ url('contact') }}">Contact</a></li>
                 </ul>
 				    <div class=" d-lg-none  d-sm-block" >
-						   <ul class="menu">
+                   <ul class="menu " style="border-top: 1px solid red;border-bottom: 1px solid red;">
+                   @if($user) 
+                        
+                         <li>  <a href="{{url('dashboard')}}" class=" "> <i class="fas la-user text-danger"></i> Dashboard</a></li>
+                        <li>  <form method="POST" class="d-inline" action="{{ route('logout') }}">
+                          @csrf
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                        this.closest('form').submit();"  >
+                      <i class="fas fa-sign-out-alt text-danger"></i> Logout</a> 
+                       </form> </li> @else
+
 							   <li> <a href="{{url('login')}}"><i class="fas fa-sign-in-alt text-danger"></i> LogIn</a></li>
 							   <li> <a href="{{url('register')}}"><i class="fas la-user text-danger"></i> Registration</a></li>
+                        @endif
                      </ul>
                   
                 </div>

@@ -1140,6 +1140,7 @@ return array(
     'Illuminate\\Bus\\ChainedBatch' => $vendorDir . '/laravel/framework/src/Illuminate/Bus/ChainedBatch.php',
     'Illuminate\\Bus\\DatabaseBatchRepository' => $vendorDir . '/laravel/framework/src/Illuminate/Bus/DatabaseBatchRepository.php',
     'Illuminate\\Bus\\Dispatcher' => $vendorDir . '/laravel/framework/src/Illuminate/Bus/Dispatcher.php',
+    'Illuminate\\Bus\\DynamoBatchRepository' => $vendorDir . '/laravel/framework/src/Illuminate/Bus/DynamoBatchRepository.php',
     'Illuminate\\Bus\\Events\\BatchDispatched' => $vendorDir . '/laravel/framework/src/Illuminate/Bus/Events/BatchDispatched.php',
     'Illuminate\\Bus\\PendingBatch' => $vendorDir . '/laravel/framework/src/Illuminate/Bus/PendingBatch.php',
     'Illuminate\\Bus\\PrunableBatchRepository' => $vendorDir . '/laravel/framework/src/Illuminate/Bus/PrunableBatchRepository.php',

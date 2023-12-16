@@ -1200,54 +1200,57 @@
                <span class="section__cate">Our Clients</span>
                <h3 class="section__title">Our Valuable Customers</h3>
                <p>
-               Thank you for being our valued customers; your satisfaction is our priority.
+               Thank you for being our valued customers your satisfaction is our priority.
                </p>
             </div>
          </div>
       </div>
       <div class="payment-slider owl-carousel owl-theme">
          <div class="payment__item">
-            <img loading="lazy" src="{{asset('assets/images/gateway/621b1433434811645941811.jpg')}}" alt="payment">
+           <a href="https://www.mclubholidays.net/" target="_blank" class="d-flex justify-content-center"><img loading="lazy" src="{{asset('client/logo.jpg')}}" alt="client"></a> 
          </div>
          <div class="payment__item">
-            <img loading="lazy" src="{{asset('assets/images/gateway/6216178f9a7371645614991.jpg')}}" alt="payment">
+           <a href="https://oshintek.com/" target="_blank" class="d-flex justify-content-center"><img loading="lazy" src="{{asset('client/logo-1.jpg')}}" alt="client"></a> 
          </div>
          <div class="payment__item">
-            <img loading="lazy" src="{{asset('assets/images/gateway/621b146d5e8ad1645941869.jpg')}}" alt="payment">
+            <a href="https://guflu.in/" target="_blank" class="d-flex justify-content-center"><img loading="lazy" src="{{asset('client/logo-12.png')}}" alt="client"></a> 
+          </div>
+         <div class="payment__item">
+           <a href="https://www.a1revival.com/" target="_blank" class="d-flex justify-content-center"><img loading="lazy" src="{{asset('client/logo-3.png')}}" alt="client"></a> 
          </div>
          <div class="payment__item">
-            <img loading="lazy" src="{{asset('assets/images/gateway/621e3542201421646146882.jpg')}}" alt="payment">
+           <a href="https://pixelvalues.com/" target="_blank" class="d-flex justify-content-center"><img loading="lazy" src="{{asset('client/logo-4.png')}}" alt="client"></a> 
          </div>
          <div class="payment__item">
-            <img loading="lazy" src="{{asset('assets/images/gateway/621e3550bd0bc1646146896.jpg')}}" alt="payment">
+           <a href="https://x-mart.in/" target="_blank" class="d-flex justify-content-center"><img loading="lazy" src="{{asset('client/logo-6.png')}}" alt="client"></a> 
          </div>
          <div class="payment__item">
-            <img loading="lazy" src="{{asset('assets/images/gateway/621e355dbf0371646146909.jpg')}}" alt="payment">
+            <a href="https://www.omgnews.co.in/" target="_blank" class="d-flex justify-content-center"><img loading="lazy" src="{{asset('client/logo-10.jpg')}}" alt="client"></a> 
+          </div>
+          <div class="payment__item">
+            <a href="https://hotelraja.co.in/" target="_blank" class="d-flex justify-content-center"><img loading="lazy" src="{{asset('client/logo-11.png')}}" alt="client"></a> 
+          </div>
+        
+          <div class="payment__item">
+            <a href="https://msdreamworld.com/" target="_blank" class="d-flex justify-content-center"><img loading="lazy" src="{{asset('client/logo-8.png')}}" alt="client"></a> 
+          </div>
+         <div class="payment__item">
+           <a href="https://tnidanmicrofoundation.in/" target="_blank" class="d-flex justify-content-center"><img loading="lazy" src="{{asset('client/logo-5.png')}}" alt="client"></a> 
+         </div>
+         
+         <div class="payment__item">
+           <a href="https://kanhasafarionline.com/" target="_blank" class="d-flex justify-content-center"><img loading="lazy" class="w-50" src="{{asset('client/logo-7.png')}}" alt="client"></a> 
          </div>
          <div class="payment__item">
-            <img loading="lazy" src="{{asset('assets/images/gateway/621e3568c0fb01646146920.jpg')}}" alt="payment">
-         </div>
+            <a href="https://smartwomaniya.com/" target="_blank" class="d-flex justify-content-center"><img loading="lazy" class="w-75" src="{{asset('client/logo-2.jpg')}}" alt="client"></a> 
+          </div>
+         
          <div class="payment__item">
-            <img loading="lazy" src="{{asset('assets/images/gateway/621e3576a10911646146934.jpg')}}" alt="payment">
+           <a href="https://aicicapp.com/" class="d-flex justify-content-center"><img loading="lazy" class="w-50" src="{{asset('client/logo-9.jpg')}}" alt="client"></a> 
          </div>
-         <div class="payment__item">
-            <img loading="lazy" src="{{asset('assets/images/gateway/621e35ef924e71646147055.jpg')}}" alt="payment">
-         </div>
-         <div class="payment__item">
-            <img loading="lazy" src="{{asset('assets/images/gateway/621e360db509b1646147085.jpg')}}" alt="payment">
-         </div>
-         <div class="payment__item">
-            <img loading="lazy" src="{{asset('assets/images/gateway/621e36221cea21646147106.jpg')}}" alt="payment">
-         </div>
-         <div class="payment__item">
-            <img loading="lazy" src="{{asset('assets/images/gateway/621e362d9864a1646147117.jpg')}}" alt="payment">
-         </div>
-         <div class="payment__item">
-            <img loading="lazy" src="{{asset('assets/images/gateway/621e363aa12da1646147130.jpg')}}" alt="payment">
-         </div>
-         <div class="payment__item">
-            <img loading="lazy" src="{{asset('assets/images/gateway/621e364cc21d41646147148.jpg')}}" alt="payment">
-         </div>
+        
+        
+     
       </div>
    </div>
 </section>

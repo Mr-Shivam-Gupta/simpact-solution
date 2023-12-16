@@ -1,2 +1,5 @@
+
 User-agent: *
-Disallow:
+Disallow: 
+Disallow: /cgi-bin/
+Sitemap: https://mlmcreatorsindia.com/sitemap.xml

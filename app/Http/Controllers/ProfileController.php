@@ -13,9 +13,6 @@ use App\Models\LoginHistory;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display the user's profile form.
-     */
     public function edit(Request $request): View
     {
         return view('admin.profile', [
@@ -36,14 +33,19 @@ class ProfileController extends Controller
     }
     public function history(Request $request): View
     {
-       $user=  $request->user();
-        $log =  LoginHistory::where('user_id',$user->id)->orderBy('id', 'desc')->take(10)->get();
-        return view('admin.login-history', ['logs'=>$log]);
+        $user = $request->user();
+        $logs = LoginHistory::select('login_history.*', 'users.*')
+            ->leftJoin('users', 'users.id', '=', 'login_history.user_id')
+            ->where('user_id', $user->id)
+            ->orderBy('login_history.id', 'desc') 
+            ->take(10)
+            ->get();
+    
+        return view('admin.login-history', ['logs' => $logs]);
     }
+    
 
-    /**
-     * Update the user's profile information.
-     */
+
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
 
