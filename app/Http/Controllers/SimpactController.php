@@ -254,11 +254,11 @@ class simpactController extends Controller
    public function modifyUser(Request $request){
        $user = User::find($request->user_id);
        if ($user) {
-         
+
          $user->costomer_id = $request->customer_id;
          $user->phone = $request->telno;
          $user->save(); 
-         
+
          response()->json(['success' => true, 'message' => 'User modified successfully']);
      } else {
          return response()->json(['success' => false, 'message' => 'User not found']);
