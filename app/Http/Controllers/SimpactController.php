@@ -250,178 +250,71 @@ class simpactController extends Controller
   
       
    // }
-   public function resellerContact(Request $request){
-    
-   }
+
+   public function modifyUser(Request $request){
+       $user = User::find($request->user_id);
+       if ($user) {
+         
+         $user->costomer_id = $request->customer_id;
+         $user->phone = $request->telno;
+         $user->save(); 
+         
+         response()->json(['success' => true, 'message' => 'User modified successfully']);
+     } else {
+         return response()->json(['success' => false, 'message' => 'User not found']);
+     }
+  }
+
+  public function apiContact(Request $request){
+
+  }
 
 
-   // public function customers(Request $request){
-   //     $url = 'https://test.httpapi.com/api/customers/v2/signup.xml';
-   
-   //     $queryParams = [
-   //         'auth-userid' => 172238,
-   //         'api-key' => 'zphlhRJETuaSCbYNl0cJKF2Y0H7bX1hX',
-   //         'name' => 'shivam gupta ',
-   //         'username' => 'shivdadm@gmail.com',
-   //         'company' => 'simpact online serive',
-   //         'address-line-1' => 'santoshi nagar raipur ',
-   //         'city' =>'raipur ',
-   //         'zipcode' => '492001',
-   //         'country' => 'IN',
-   //         'state' => 'chhattisagarh',
-   //         'phone-cc' => '+91',
-   //         'phone' => '9669729320',
-   //         'passwd' => 'Tdddst@123456a',
-   //         'lang-pref' => 'en'
-   //       //   'name' => $request->input('name'),
-   //       //   'username' => $request->input('email'),
-   //       //   'company' => $request->input('companyname'),
-   //       //   'address-line-1' => $request->input('address1'),
-   //       //   'city' => $request->input('city'),
-   //       //   'zipcode' => $request->input('zip'),
-   //       //   'country' => $request->input('country'),
-   //       //   'state' => $request->input('state'),
-   //       //   'phone-cc' => $request->input('telnocc'),
-   //       //   'phone' => $request->input('telno'),
-   //       //   'passwd' => $request->input('passwd'),
-   //       //   'lang-pref' => 'en'
-   //     ];
-   //    //  dd($queryParams);
-   
-   //     // Add custom headers
-   //     $headers = [
-   //         'Content-Type' => 'application/xml',
-   //         'Access-Control-Allow-Origin' => '*',
-   //         'Access-Control-Allow-Methods' => 'POST',
-   //         'Access-Control-Allow-Headers' => 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
-   //     ];
-   
-   //     // Make the API request using POST method
-   //     $response = Http::withHeaders($headers)->post($url, $queryParams);
-   //     dd($response);
-   //     // Handle the response
-   //     if ($response->successful()) {
-   //         // Successful API call
-   //         $xmlResponse = $response->body();
-   //         // Process $xmlResponse as needed
-   
-   //         // Return a success message
-   //         return response()->json(['success' => true, 'message' => 'API request successful', 'data' => $xmlResponse]);
-   //     } 
-   //     else {
-   //         // Error in API call
-   //         $errorMessage = $response->body();
-   //         // Handle the error message
-   
-   //         // Return an error message
-   //         return response()->json(['success' => false, 'message' => 'API request failed', 'error' => $errorMessage]);
-   //     }
-   // }
-//    public function customers(Request $request){
-//     $url = 'https://test.httpapi.com/api/customers/v2/signup.xml';
-
-//     $queryParams = [
-//         'auth-userid' => 172238,
-//         'api-key' => 'zphlhRJETuaSCbYNl0cJKF2Y0H7bX1hX',
-//         'name' => 'shivam gupta',
-//         'username' => 'shivdadm@gmail.com',
-//         'company' => 'simpact online service',
-//         'address-line-1' => 'santoshi nagar raipur',
-//         'city' => 'raipur',
-//         'zipcode' => '492001',
-//         'country' => 'IN',
-//         'state' => 'chhattisgarh',
-//         'phone-cc' => '+91',
-//         'phone' => '9669729320',
-//         'passwd' => 'Tdddst@123456a',
-//         'lang-pref' => 'en'
-//     ];
-
-//     // Add custom headers
-//     $headers = [
-//         'Content-Type' => 'application/xml',
-//         'Access-Control-Allow-Origin' => '*',
-//         'Access-Control-Allow-Methods' => 'POST',
-//         'Access-Control-Allow-Headers' => 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
-//     ];
-
-//     // Make the API request using POST method
-//     $response = Http::withHeaders($headers)->post($url, $queryParams);
-
-//     // Handle the response
-//     if ($response->successful()) {
-//         // Successful API call
-//         $xmlResponse = $response->body();
-//         // Process $xmlResponse as needed
-
-//         // Return a success message
-//         return response()->json(['success' => true, 'message' => 'API request successful', 'data' => $xmlResponse]);
-//     } else {
-//         // Error in API call
-//         $errorMessage = $response->body();
-//         // Handle the error message
-
-//         // Return an error message
-//         return response()->json(['success' => false, 'message' => 'API request failed', 'error' => $errorMessage]);
-//     }
-// }
 public function customers(Request $request)
 {
-    $url = 'https://test.httpapi.com/api/customers/v2/signup.xml?auth-userid=172238&api-key=zphlhRJETuaSCbYNl0cJKF2Y0H7bX1hX&username=shivfdadm@gmail.com&passwd=Tdddst@123456a&name=shivam &company=simpact online serive&address-line-1=santoshi nagar raipur &city=raipur &state=chhattisagarh&country=IN&zipcode=492001&phone-cc=+91&phone=9669729320&lang-pref=en';
-
-    // Authentication parameters
-    $authParams = [
-        'auth-userid' => 172238,
-        'api-key' => 'zphlhRJETuaSCbYNl0cJKF2Y0H7bX1hX',
-    ];
-
-    // Other request parameters
-    $queryParams = [
-        'name' => 'shivam1gupta',
-        'username' => 'shivdad1m@gmail.com',
-        'company' => 'simpact online service',
-        'address-line-1' => 'santoshi nagar raipur',
-        'city' => 'raipur',
-        'zipcode' => '492001',
-        'country' => 'IN',
-        'state' => 'chhattisgarh',
-        'phone-cc' => '+91',
-        'phone' => '9669729320',
-        'passwd' => 'Tdddst@123456a',
-        'lang-pref' => 'en'
-    ];
-
-    // Combine authentication and request parameters
-    $allParams = array_merge($authParams, $queryParams);
-
-    // Add custom headers
-    $headers = [
-        'Content-Type' => 'application/xml',
-        'Access-Control-Allow-Origin' => '*',
-        'Access-Control-Allow-Methods' => 'GET, POST, OPTIONS',
-        'Access-Control-Allow-Headers' => 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
-    ];
-
-    // Make the API request using POST method and including authentication in the request body
+    $url = 'https://test.httpapi.com/api/customers/v2/signup.xml?auth-userid=172238&api-key=zphlhRJETuaSCbYNl0cJKF2Y0H7bX1hX&username='.$request->email.'&passwd='.$request->passwd.'&name='.$request->name.'&company='.$request->companyname.'&address-line-1='.$request->address1.'&city='.$request->city.'&state='.$request->state.'&country='.$request->country.'&zipcode='.$request->zip.'&phone-cc='.$request->telnocc.'&phone='.$request->telno.'&lang-pref=en';
     $response = Http::post($url);
-   //  dd($response);
-    // Handle the response
     if ($response->successful()) {
-        // Successful API call
         $xmlResponse = $response->body();
-        // Process $xmlResponse as needed
-
-        // Return a success message
-        return response()->json(['success' => true, 'message' => 'API request successful', 'data' => $xmlResponse]);
+        return   response()->json(['success' => true, 'message' => 'API request successful', 'data' => $xmlResponse,]);
     } else {
-        // Error in API call
         $errorMessage = $response->body();
-        // Handle the error message
-
-        // Return an error message
         return response()->json(['success' => false, 'message' => 'API request failed', 'error' => $errorMessage]);
     }
 }
+
+
+
+
+
+// public function customers(Request $request)
+// {
+//     $url = 'https://test.httpapi.com/api/customers/v2/signup.xml?auth-userid=172238&api-key=zphlhRJETuaSCbYNl0cJKF2Y0H7bX1hX&username='.$request->email.'&passwd='.$request->passwd.'&name='.$request->name.'&company='.$request->companyname.'&address-line-1='.$request->address1.'&city='.$request->city.'&state='.$request->state.'&country='.$request->country.'&zipcode='.$request->zip.'&phone-cc='.$request->telnocc.'&phone='.$request->telno.'&lang-pref=en';
+    
+//     $response = Http::post($url);
+
+//     if ($response->successful()) {
+//         $xmlResponse = simplexml_load_string($response->body());
+//         $customerId = (string) $xmlResponse->customerid;
+
+//         $url2 = 'https://test.httpapi.com/api/contacts/add.json?auth-userid=172238&api-key=zphlhRJETuaSCbYNl0cJKF2Y0H7bX1hX&username='.$request->email.'&passwd='.$request->passwd.'&name='.$request->name.'&company='.$request->companyname.'&address-line-1='.$request->address1.'&city='.$request->city.'&country='.$request->country.'&zipcode='.$request->zip.'&phone-cc='.$request->telnocc.'&phone='.$request->telno.'&customer-id='.$customerId.'&type=Contact';
+
+//         $response2 = Http::post($url2);
+
+//         if ($response2->successful()) {
+//             return response()->json(['success' => true, 'message' => 'API request successful','data-1' => $response->body(),'data-2' => $response2->body()]);
+//         } else {
+//             $errorMessage = $response2->body();
+//             return response()->json(['success' => false, 'message' => 'Second API request failed', 'error' => $errorMessage]);
+//         }
+//     } else {
+//         $errorMessage = $response->body();
+//         return response()->json(['success' => false, 'message' => 'First API request failed', 'error' => $errorMessage]);
+//     }
+// }
+
+
+
 
 
    public function checkDomain(Request $request)

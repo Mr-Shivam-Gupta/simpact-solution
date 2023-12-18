@@ -53,8 +53,8 @@ Route::any('/google-login', [SimpactController::class, 'googleLogin']);
 Route::get('/auth/google/callback', [SimpactController::class, 'googleHandle']);
 
 Route::post('check-domain', [SimpactController::class, 'checkDomain']);
-
 Route::post('add-customers', [SimpactController::class, 'customers']);
+Route::post('modify-user', [SimpactController::class, 'modifyUser']);
 
 
 

@@ -79,6 +79,7 @@
     <link media  rel="stylesheet" href="{{asset('assets/templates/basic/css/main.css')}}">
     <link media  rel="stylesheet" href="{{asset('assets/templates/basic/css/color8bf4.css?color=7376E7&amp;secondColor=47498f')}}">
     <script src="{{asset('assets/global/js/jquery-3.6.0.min.js')}}" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="overflow-hidden">
