@@ -71,7 +71,7 @@
                     <input name="address1" type="text" class="form-control" value="santoshi nagar raipur" id="input_address1" size="35">
                     <div class="col-12">
                         <label for="select_city">City</label>
-                        <input name="city" type="text" class="form-control" value="raipur" id="select_city" size="35">
+                        <input name="city"  type="text" class="form-control" value="raipur" id="select_city" size="35">
                     </div>
                     <div class="col-12">
                         <label for="input_zip">Zip</label>
@@ -130,7 +130,6 @@
                                           <option value="Other">Other</option>
                     </select>
                 </div>
-
                 <div class="col-12">
                     <label for="input_phone">Phone</label>
                     <div style="display: -webkit-box">
@@ -152,9 +151,11 @@
             </div>
         </div>
     </form>
-    <form action="modify-user" id="modifyUser">
+    <form action="modify-user" method="post" id="modifyUser" class="d-none">
         @csrf
-        <input type="hidden" name="user_id" value="{{$user->id}}">
+        <input type="hidden" name="user_id" value="@if($user) {{$user->id}} @endif">
+        <input type="hidden" name="name" value="@if($user) {{$user->name}} @endif">
+        <input type="hidden" name="email" value="@if($user) {{$user->email}} @endif">
         <input type="hidden" name="customer_id" id="customer_id" value="">
         <input type="hidden" name="companyname_id" id="companyname_id" value="">
         <input type="hidden" name="address1_id" id="address1_id" value="">
@@ -162,63 +163,13 @@
         <input type="hidden" name="country_id" id="country_id" value="">
         <input type="hidden" name="state_id" id="state_id" value="">
         <input type="hidden" name="phone_id" id="phone_id" value="">
+        <input type="hidden" name="zip_id" id="zip_id" value="">
         <button type="submit">submit</button>
     </form>
 </div>
 </div>
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-{{-- <script>
-    $(document).ready(function () {
-        $('#add-customers').submit(function (event) {
-            event.preventDefault(); 
-            var formData = $(this).serialize(); 
-            Swal.fire({
-                title: 'Loading...',
-                allowOutsideClick: false,
-                showConfirmButton: false,
-                onBeforeOpen: () => {
-                    Swal.showLoading();
-                }
-            });
 
-            $.ajax({
-                type: 'POST',
-                url: 'add-customers',
-                data: formData,
-                success: function (response) {
-                    Swal.close();
-                    if (response.success) {
-                        const customerId = $(response.data).text();
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'API request successful',
-                            text: 'This is your customer ID: ' + customerId
-                        });
-                    } else {
-                        // API request failed
-                        const errorMessage = $(response.error).find('message').text();
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'API request failed',
-                            text: errorMessage
-                        });
-                    }
-                },
-                error: function (error) {
-                    // Close loader
-                    Swal.close();
-
-                    // Handle the error response
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: 'An error occurred during the API request.'
-                    });
-                }
-            });
-        });
-    });
-</script>  --}}
 
 <script>
 $(document).ready(function () {
@@ -276,14 +227,16 @@ $(document).ready(function () {
 
         var companyname = $('#input_companyname').val();
         var address1 = $('#input_address1').val();
-        var city = $('#city').val();
+        var city = $('#select_city').val();
         var zip = $('#zip').val();
         var country = $('#country').val();
         var state = $('#stateSelect').val();
         var phone = $('#input_phone').val();
+        var password = $('#passwd').val();
 
-      
 
+        $('#password_id').val(password);
+        $('#customer_id').val(customerId);
         $('#address1_id').val(address1);
         $('#companyname_id').val(companyname);
         $('#zip_id').val(zip);

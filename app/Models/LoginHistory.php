@@ -25,4 +25,8 @@ class LoginHistory extends Model
         $agent = new Agent();
         $this->attributes['browser'] = $agent->browser(); // You can customize this based on your needs
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

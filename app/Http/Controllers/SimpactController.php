@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Http;
 use App\Models\User;
 use App\Models\Registration;
 use App\Models\blogs;
+use App\Models\UserInfo;
 use App\Models\LoginHistory;
 use App\Mail\mailsender;
 use Jenssegers\Agent\Agent;
@@ -252,17 +253,46 @@ class simpactController extends Controller
    // }
 
    public function modifyUser(Request $request){
-       $user = User::find($request->user_id);
-       if ($user) {
-
-         $user->costomer_id = $request->customer_id;
-         $user->phone = $request->telno;
-         $user->save(); 
-
-         response()->json(['success' => true, 'message' => 'User modified successfully']);
-     } else {
-         return response()->json(['success' => false, 'message' => 'User not found']);
-     }
+      $id = $request->user_id;
+      $user = User::find($id);
+  
+      if ($user) {
+          $user->costomer_id = $request->customer_id;
+          $user->save();
+  
+          // Check if user_info record exists for the given user_id
+          $user_info = UserInfo::where('user_id', $id)->first();
+  
+          if ($user_info) {
+              // If user_info record exists, update it
+              $user_info->companyname = $request->companyname_id;
+              $user_info->address = $request->address1_id;
+              $user_info->city = $request->city_id; 
+              $user_info->zip = $request->zip_id; 
+              $user_info->country = $request->country_id;
+              $user_info->state = $request->state_id;
+              $user_info->phone = $request->phone_id;
+              $user_info->password = $request->passwd;
+              $user_info->save();
+          } else {
+              // If user_info record doesn't exist, create a new one
+              $new_user_info = new UserInfo();
+              $new_user_info->user_id = $id;
+              $new_user_info->companyname = $request->companyname_id;
+              $new_user_info->address = $request->address1_id;
+              $new_user_info->city = $request->city_id;
+              $user_info->zip = $request->zip_id; 
+              $new_user_info->country = $request->country_id;
+              $new_user_info->state = $request->state_id;
+              $new_user_info->phone = $request->phone_id;
+              $new_user_info->password = $request->passwd;
+              $new_user_info->save();
+          }
+  
+          return response()->json(['success' => true, 'message' => 'User modified successfully']);
+      } else {
+          return response()->json(['success' => false, 'message' => 'User not found']);
+      }
   }
 
   public function apiContact(Request $request){
@@ -282,40 +312,6 @@ public function customers(Request $request)
         return response()->json(['success' => false, 'message' => 'API request failed', 'error' => $errorMessage]);
     }
 }
-
-
-
-
-
-// public function customers(Request $request)
-// {
-//     $url = 'https://test.httpapi.com/api/customers/v2/signup.xml?auth-userid=172238&api-key=zphlhRJETuaSCbYNl0cJKF2Y0H7bX1hX&username='.$request->email.'&passwd='.$request->passwd.'&name='.$request->name.'&company='.$request->companyname.'&address-line-1='.$request->address1.'&city='.$request->city.'&state='.$request->state.'&country='.$request->country.'&zipcode='.$request->zip.'&phone-cc='.$request->telnocc.'&phone='.$request->telno.'&lang-pref=en';
-    
-//     $response = Http::post($url);
-
-//     if ($response->successful()) {
-//         $xmlResponse = simplexml_load_string($response->body());
-//         $customerId = (string) $xmlResponse->customerid;
-
-//         $url2 = 'https://test.httpapi.com/api/contacts/add.json?auth-userid=172238&api-key=zphlhRJETuaSCbYNl0cJKF2Y0H7bX1hX&username='.$request->email.'&passwd='.$request->passwd.'&name='.$request->name.'&company='.$request->companyname.'&address-line-1='.$request->address1.'&city='.$request->city.'&country='.$request->country.'&zipcode='.$request->zip.'&phone-cc='.$request->telnocc.'&phone='.$request->telno.'&customer-id='.$customerId.'&type=Contact';
-
-//         $response2 = Http::post($url2);
-
-//         if ($response2->successful()) {
-//             return response()->json(['success' => true, 'message' => 'API request successful','data-1' => $response->body(),'data-2' => $response2->body()]);
-//         } else {
-//             $errorMessage = $response2->body();
-//             return response()->json(['success' => false, 'message' => 'Second API request failed', 'error' => $errorMessage]);
-//         }
-//     } else {
-//         $errorMessage = $response->body();
-//         return response()->json(['success' => false, 'message' => 'First API request failed', 'error' => $errorMessage]);
-//     }
-// }
-
-
-
-
 
    public function checkDomain(Request $request)
    {
