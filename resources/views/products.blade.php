@@ -24,31 +24,35 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="card shadow p-3 mb-5 bg-white rounded">
-                <form id="domainForm" method="POST">
+                <form @if($user) id="domainForm"  method="POST" @endif>
                     @csrf
-                    <input name="domain" type="text">
+                    <input name="domain" type="text" >
                     <div class="d-flex align-items-center">
-                        <input type="radio" id="com" name="tlds" value="com"> <label for="com">com</label><br>
+                        <input type="radio" id="com" name="tlds" value="com" > <label for="com">com</label><br>
                         <input type="radio" id="net" name="tlds" value="net"> <label for="net">net</label><br>
                         <input type="radio" id="in" name="tlds" value="in"> <label for="in">in</label>
                         <input type="radio" id="org" name="tlds" value="org"> <label for="org">org</label>
                         <input type="radio" id="co.in" name="tlds" value="co.in"> <label for="co.in">co.in</label>
                     </div>
-                    <button type="submit" onclick="submitForm()">Submit</button>
+                    @if($user) <button type="submit" onclick="submitForm()">Submit</button>
+                    @else
+                    <a href="{{url('login')}}" class="btn btn-primary" onclick="alert('Please Login First')" > Please Login</a>
+                    @endif
                 </form>
 
                 <div class="card-body">
                     <div id="checkDomainsContainer"></div>
                     <hr class="my-1">
-                    <!-- Add more sections as needed -->
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+@if($user)
 <div class="container card">
     <div class="row p-2">
-        <h5>@if($user) {{$user->name}} @else<p>prvide some details </p>@endif</h5>
+        <h5>  <p>prvide some details </p></h5>
     </div>
     <form  id="add-customers"  method="post" class="d-flex">
         @csrf
@@ -60,7 +64,7 @@
                 </div>
                 <div class="col-12">
                     <label for="input_email">Email</label>
-                    <input name="email" type="text" class="form-control" value="@if($user) {{$user->email}} @endif" id="input_email" size="35">
+                    <input name="email" type="text" class="form-control" value="@if($user) {{$user->email}} @endif" id="input_email" size="35" readonly>
                 </div>
                 <div class="col-12">
                     <label for="input_companyname">Company Name</label>
@@ -79,7 +83,6 @@
                     </div>
                 </div>
             </div>
-    
             <div class="col-md-6 col-sm-12">
                 <div class="col-12">
                     <label for="country">Country</label>
@@ -91,42 +94,42 @@
                     <label for="stateSelect">State</label>
                     <select name="state" class="form-control required"  id="stateSelect">
                         <option value="Select State">Select State</option>
-                                          <option value="1711">Andaman and Nicobar Islands</option>
-                                          <option value="1712">Andhra Pradesh</option>
-                                          <option value="1713">Arunachal Pradesh</option>
-                                          <option value="1714">Assam</option>
-                                          <option value="1715">Bihar</option>
-                                          <option value="1716">Chandigarh</option>
+                                          <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                                          <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                          <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                          <option value="Assam">Assam</option>
+                                          <option value="Bihar">Bihar</option>
+                                          <option value="Chandigarh">Chandigarh</option>
                                           <option selected value="Chhattisgarh">Chhattisgarh</option>
-                                          <option value="1717">Dadra and Nagar Haveli and Daman and Diu</option>
-                                          <option value="1719">Delhi</option>
-                                          <option value="1720">Goa</option>
-                                          <option value="1721">Gujarat</option>
-                                          <option value="1722">Haryana</option>
-                                          <option value="1723">Himachal Pradesh</option>
-                                          <option value="1724">Jammu and Kashmir</option>
-                                          <option value="3951">Jharkhand</option>
-                                          <option value="1725">Karnataka</option>
-                                          <option value="1726">Kerala</option>
-                                          <option value="4317">Ladakh</option>
-                                          <option value="1727">Lakshadweep</option>
-                                          <option value="1728">Madhya Pradesh</option>
-                                          <option value="1729">Maharashtra</option>
-                                          <option value="1730">Manipur</option>
-                                          <option value="1731">Meghalaya</option>
-                                          <option value="1732">Mizoram</option>
-                                          <option value="1733">Nagaland</option>
-                                          <option value="1734">Orissa</option>
-                                          <option value="1735">Pondicherry</option>
-                                          <option value="1736">Punjab</option>
-                                          <option value="1737">Rajasthan</option>
-                                          <option value="1738">Sikkim</option>
-                                          <option value="1739">Tamil Nadu</option>
-                                          <option value="4284">Telangana</option>
-                                          <option value="1740">Tripura</option>
-                                          <option value="1741">Uttar Pradesh</option>
-                                          <option value="3867">Uttaranchal</option>
-                                          <option value="1742">West Bengal</option>
+                                          <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+                                          <option value="Delhi">Delhi</option>
+                                          <option value="Goa">Goa</option>
+                                          <option value="Gujarat">Gujarat</option>
+                                          <option value="Haryana">Haryana</option>
+                                          <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                          <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                          <option value="Jharkhand">Jharkhand</option>
+                                          <option value="Karnataka">Karnataka</option>
+                                          <option value="Kerala">Kerala</option>
+                                          <option value="Ladakh">Ladakh</option>
+                                          <option value="Lakshadweep">Lakshadweep</option>
+                                          <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                          <option value="Maharashtra">Maharashtra</option>
+                                          <option value="Manipur">Manipur</option>
+                                          <option value="Meghalaya">Meghalaya</option>
+                                          <option value="Mizoram">Mizoram</option>
+                                          <option value="Nagaland">Nagaland</option>
+                                          <option value="Orissa">Orissa</option>
+                                          <option value="Pondicherry">Pondicherry</option>
+                                          <option value="Punjab">Punjab</option>
+                                          <option value="Rajasthan">Rajasthan</option>
+                                          <option value="Sikkim">Sikkim</option>
+                                          <option value="Tamil Nadu">Tamil Nadu</option>
+                                          <option value="Telangana">Telangana</option>
+                                          <option value="Tripura">Tripura</option>
+                                          <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                          <option value="Uttaranchal">Uttaranchal</option>
+                                          <option value="West Bengal">West Bengal</option>
                                           <option value="Other">Other</option>
                     </select>
                 </div>
@@ -164,92 +167,226 @@
         <input type="hidden" name="state_id" id="state_id" value="">
         <input type="hidden" name="phone_id" id="phone_id" value="">
         <input type="hidden" name="zip_id" id="zip_id" value="">
+        <input type="hidden" name="password" id="password_id" value="">
+        <input type="hidden" name="name_id" id="name_id" value="">
+        <input type="hidden" name="email_id" id="email_id" value="">
         <button type="submit">submit</button>
     </form>
 </div>
 </div>
-<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+@endif
+
+<script>
+    $(document).ready(function() {
+      $('#add-customers').submit(function(e) {
+        // Reset previous error messages
+        resetErrors();
+  
+        // Perform validation
+        if (!validateRequiredFields() || !validateEmail() || !validatePassword()) {
+          e.preventDefault(); // Prevent form submission if validation fails
+        }
+      });
+  
+      function resetErrors() {
+        // Reset previous error messages
+        $('.error-message').hide();
+      }
+  
+      function validateRequiredFields() {
+        var isValid = true;
+        $('.required').each(function() {
+          if (!$(this).val().trim()) {
+            displayError($(this), 'This field is required.');
+            isValid = false;
+          }
+        });
+  
+        return isValid;
+      }
+  
+      function validateEmail() {
+        var emailField = $('#input_email');
+        var emailValue = emailField.val().trim();
+  
+        // Basic email validation
+        if (emailValue && !isValidEmail(emailValue)) {
+          displayError(emailField, 'Invalid email address.');
+          return false;
+        }
+  
+        return true;
+      }
+  
+      function isValidEmail(email) {
+        // Basic email validation regex
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      }
+  
+      function validatePassword() {
+        var passwordField = $('#passwd');
+        var confirmPasswordField = $('#conf_passwd');
+        var passwordValue = passwordField.val().trim();
+        var confirmPasswordValue = confirmPasswordField.val().trim();
+  
+        // Check if password and confirm password match
+        if (passwordValue !== confirmPasswordValue) {
+          displayError(confirmPasswordField, 'Passwords do not match.');
+          return false;
+        }
+  
+        return true;
+      }
+  
+      function displayError(field, message) {
+        // Display error message next to the field
+        var errorMessage = $('<span class="error-message">' + message + '</span>');
+        field.parent().append(errorMessage);
+      }
+    });
+  </script>
 
 
 <script>
-$(document).ready(function () {
-    $('#add-customers').submit(function (event) {
-        event.preventDefault();
-        var formData = $(this).serialize();
-        console.log(formData);
-        Swal.fire({
-            title: 'Loading...',
-            allowOutsideClick: false,
-            showConfirmButton: false,
-            onBeforeOpen: () => {
-                Swal.showLoading();
+    $(document).ready(function () {
+        $('#add-customers').submit(function (event) {
+            event.preventDefault();
+
+            // Perform client-side validation
+            if (!validateRequiredFields() || !validateEmail() || !validatePassword()) {
+                // Display error messages, if any
+                return;
             }
-        });
-        $.ajax({
-            type: 'POST',
-            url: 'add-customers',
-            data: formData,
-            success: function (response) {
-                Swal.close();
-                if (response.success) {
-                    const customerId = $(response.data).text();
-                    setCustomerIdAndSubmit(customerId);
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'API requests successful',
-                        text: 'This is your customer ID: ' + customerId
-                    });
-                } else {
-                    // API request failed
-                    const errorMessage = $(response.error).find('message').text();
+
+            var formData = $(this).serialize();
+            console.log(formData);
+
+            Swal.fire({
+                title: 'Loading...',
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                onBeforeOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+
+            $.ajax({
+                type: 'POST',
+                url: 'add-customers',
+                data: formData,
+                success: function (response) {
+                    Swal.close();
+                    if (response.success) {
+                        const customerId = $(response.data).text();
+                        setCustomerIdAndSubmit(customerId);
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Successful',
+                            text: 'This is your customer ID: ' + customerId
+                        });
+                    } else {
+                        // API request failed
+                        const errorMessage = $(response.error).find('message').text();
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: errorMessage
+                        });
+                    }
+                },
+                error: function (error) {
+                    // Close loader
+                    Swal.close();
+
+                    // Handle the error response
                     Swal.fire({
                         icon: 'error',
-                        title: 'API request failed',
-                        text: errorMessage
+                        title: 'Error',
+                        text: 'Something went wrong! Please try again.'
                     });
                 }
-            },
-            error: function (error) {
-                // Close loader
-                Swal.close();
-
-                // Handle the error response
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'An error occurred during the API request.'
-                });
-            }
+            });
         });
+
+        function setCustomerIdAndSubmit(customerId) {
+            var companyname = $('#input_companyname').val();
+            var address1 = $('#input_address1').val();
+            var city = $('#select_city').val();
+            var zip = $('#input_zip').val();
+            var country = $('#country').val();
+            var state = $('#stateSelect').val();
+            var phone = $('#input_phone').val();
+            var password = $('#passwd').val();
+            var name = $('#input_fullname').val();
+            var email = $('#input_email').val();
+            $('#name_id').val(name);
+            $('#email_id').val(email);
+            $('#password_id').val(password);
+            $('#customer_id').val(customerId);
+            $('#address1_id').val(address1);
+            $('#companyname_id').val(companyname);
+            $('#zip_id').val(zip);
+            $('#city_id').val(city);
+            $('#country_id').val(country);
+            $('#state_id').val(state);
+            $('#phone_id').val(phone);
+
+            $('#modifyUser').submit();
+        }
+
+        function validateRequiredFields() {
+            var isValid = true;
+            $('.required').each(function () {
+                if (!$(this).val().trim()) {
+                    displayError($(this), 'This field is required.');
+                    isValid = false;
+                }
+            });
+
+            return isValid;
+        }
+
+        function validateEmail() {
+            var emailField = $('#input_email');
+            var emailValue = emailField.val().trim();
+
+            // Basic email validation
+            if (emailValue && !isValidEmail(emailValue)) {
+                displayError(emailField, 'Invalid email address.');
+                return false;
+            }
+
+            return true;
+        }
+
+        function isValidEmail(email) {
+            // Basic email validation regex
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function validatePassword() {
+            var passwordField = $('#passwd');
+            var confirmPasswordField = $('#conf_passwd');
+            var passwordValue = passwordField.val().trim();
+            var confirmPasswordValue = confirmPasswordField.val().trim();
+
+            // Check if password and confirm password match
+            if (passwordValue !== confirmPasswordValue) {
+                displayError(confirmPasswordField, 'Passwords do not match.');
+                return false;
+            }
+
+            return true;
+        }
+
+        function displayError(field, message) {
+            // Display error message next to the field
+            var errorMessage = $('<span class="error-message">' + message + '</span>');
+            field.parent().append(errorMessage);
+        }
     });
-
-    function setCustomerIdAndSubmit(customerId) {
-
-        var companyname = $('#input_companyname').val();
-        var address1 = $('#input_address1').val();
-        var city = $('#select_city').val();
-        var zip = $('#zip').val();
-        var country = $('#country').val();
-        var state = $('#stateSelect').val();
-        var phone = $('#input_phone').val();
-        var password = $('#passwd').val();
-
-
-        $('#password_id').val(password);
-        $('#customer_id').val(customerId);
-        $('#address1_id').val(address1);
-        $('#companyname_id').val(companyname);
-        $('#zip_id').val(zip);
-        $('#city_id').val(city);
-        $('#country_id').val(country);
-        $('#state_id').val(state);
-        $('#phone_id').val(phone);
-
-        $('#modifyUser').submit();
-    }
-
- 
-});
 </script>
 
 {{-- <script>
