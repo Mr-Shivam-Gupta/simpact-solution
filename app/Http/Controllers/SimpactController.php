@@ -326,30 +326,32 @@ public function customers(Request $request)
 
    public function checkDomain(Request $request)
    {
-      $url1 = 'https://domaincheck.httpapi.com/api/domains/available.json';
-      $domain =$request->domain;
-      $tlds =$request->tlds;
-      $queryParams1 = [
-          'auth-userid' => '172238',
-          'api-key' => 'zphlhRJETuaSCbYNl0cJKF2Y0H7bX1hX',
-          'domain-name' => $domain,
-          'tlds' => $tlds,
-      ];
-      $response1 = Http::get($url1, $queryParams1);
+      $url1 = 'https://domaincheck.httpapi.com/api/domains/available.json?auth-userid=172238&api-key=zphlhRJETuaSCbYNl0cJKF2Y0H7bX1hX&domain-name='.$request->domain.'&tlds=com&tlds=net&tlds=in&tlds=org&tlds=co.in';
+      // $domain =$request->domain;
+      // $tlds =$request->tlds;
+      // $queryParams1 = [
+      //     'auth-userid' => '172238',
+      //     'api-key' => 'zphlhRJETuaSCbYNl0cJKF2Y0H7bX1hX',
+      //     'domain-name' => $domain,
+      //     'tlds' => array('in','com','net'),
+      //     'tlds' => 'com',
+      //     'tlds' => 'net',
+      // ];
+      $response1 = Http::get($url1);
       $responseData1 = $response1->json();
       // return response()->json(['check_domains' => $responseData1]);
     
-      $url2 = 'https://domaincheck.httpapi.com/api/domains/premium/available.xml';
-      $queryParams2 = [
-          'auth-userid' => '172238',
-          'api-key' => 'zphlhRJETuaSCbYNl0cJKF2Y0H7bX1hX',
-          'domain-name' => $request->domain,
-          'key-word' => 'shivam',
-          'tlds' => $request->tlds,
-          'price-high' => '10000',
-          'no-of-results' => '20',
-      ];
-      $response2 = Http::get($url2,$queryParams2);
+      $url2 = 'https://domaincheck.httpapi.com/api/domains/premium/available.xml?auth-userid=172238&api-key=zphlhRJETuaSCbYNl0cJKF2Y0H7bX1hX&key-word='.$request->domain.'&tlds=com&tlds=net&tlds=in&tlds=org&tlds=co.in&price-high=10000&no-of-results=20';
+      // $queryParams2 = [
+      //     'auth-userid' => '172238',
+      //     'api-key' => 'zphlhRJETuaSCbYNl0cJKF2Y0H7bX1hX',
+      //     'domain-name' => $request->domain,
+      //     'key-word' => 'shivam',
+      //     'tlds' => $request->tlds,
+      //     'price-high' => '10000',
+      //     'no-of-results' => '20',
+      // ];
+      $response2 = Http::get($url2);
       $xmlResponse = $response2->body();
       $xml = new \SimpleXMLElement($xmlResponse);
       $premiumDomains = [];
