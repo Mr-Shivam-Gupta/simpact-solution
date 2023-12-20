@@ -54,6 +54,7 @@
     <div class="row p-2">
         <h5>  <p>prvide some details </p></h5>
     </div>
+    @if($user->costomer_id) hello @else 
     <form  id="add-customers"  method="post" class="d-flex">
         @csrf
         <div class="row card-body p-2">
@@ -64,22 +65,22 @@
                 </div>
                 <div class="col-12">
                     <label for="input_email">Email</label>
-                    <input name="email" type="text" class="form-control" value="@if($user) {{$user->email}} @endif" id="input_email" size="35" readonly>
+                    <input name="email" type="text" class="form-control" value="@if($user) {{$user->email}} @endif" id="input_email"  readonly>
                 </div>
                 <div class="col-12">
                     <label for="input_companyname">Company Name</label>
-                    <input name="companyname" type="text" class="form-control" value="simpact solution" id="input_companyname" size="35">
+                    <input name="companyname" type="text" class="form-control" value="" id="input_companyname" >
                 </div>
                 <div class="col-12">
                     <label for="input_address1">Address</label>
-                    <input name="address1" type="text" class="form-control" value="santoshi nagar raipur" id="input_address1" size="35">
+                    <input name="address1" type="text" class="form-control" value="" id="input_address1" >
                     <div class="col-12">
                         <label for="select_city">City</label>
-                        <input name="city"  type="text" class="form-control" value="raipur" id="select_city" size="35">
+                        <input name="city"  type="text" class="form-control" value="" id="select_city" >
                     </div>
                     <div class="col-12">
                         <label for="input_zip">Zip</label>
-                        <input name="zip" type="text" class="form-control" value="492001" id="input_zip" size="35">
+                        <input name="zip" type="text" class="form-control" value="" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" id="input_zip" >
                     </div>
                 </div>
             </div>
@@ -100,7 +101,7 @@
                                           <option value="Assam">Assam</option>
                                           <option value="Bihar">Bihar</option>
                                           <option value="Chandigarh">Chandigarh</option>
-                                          <option selected value="Chhattisgarh">Chhattisgarh</option>
+                                          <option value="Chhattisgarh">Chhattisgarh</option>
                                           <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
                                           <option value="Delhi">Delhi</option>
                                           <option value="Goa">Goa</option>
@@ -136,24 +137,28 @@
                 <div class="col-12">
                     <label for="input_phone">Phone</label>
                     <div style="display: -webkit-box">
-                        <input class="form-control w-25" type="text" id="input_phone_cc" name="telnocc" maxlength="3" size="3" value="+91">
-                        <input class="form-control w-75" type="text" id="input_phone" name="telno" maxlength="12" value="9669729320" size="35">
+                        <input class="form-control w-25" type="text" id="input_phone_cc" name="telnocc" maxlength="3" size="3" value="+91" readonly>
+                        <input class="form-control w-75" type="text" id="input_phone" name="telno" maxlength="12" value="" >
                     </div>
                 </div>
                 <div class="col-12">
                     <label for="passwd">Password</label>
-                    <input name="passwd" type="text" class="form-control" value="SHivam@123" id="passwd" size="35">
+                    <input name="passwd" type="password" class="form-control" value="" id="passwd" >
                 </div>
                 <div class="col-12">
                     <label for="conf_passwd">Confirm Password</label>
-                    <input name="conf_passwd" type="text" class="form-control" value="SHivam@123" id="conf_passwd" size="35">
+                    <input name="conf_passwd" type="password" class="form-control" value="" id="conf_passwd" >
+                </div>
+                <div class="col-12">
+                    <p>Password have atleast one capital one samll one number and one spacial charector.</p>
                 </div>
             </div>
             <div class="d-flex justify-content-center col-12 mt-2">
                 <button  type="submit" id="submitBtn" class="btn btn-primary">Submit</button>
             </div>
         </div>
-    </form>
+    </form>  @endif
+
     <form action="modify-user" method="post" id="modifyUser" class="d-none">
         @csrf
         <input type="hidden" name="user_id" value="@if($user) {{$user->id}} @endif">
