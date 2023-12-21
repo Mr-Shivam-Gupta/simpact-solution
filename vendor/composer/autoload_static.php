@@ -44,6 +44,10 @@ class ComposerStaticInit6d251131d48ecfe7df0544750195ad15
         array (
             'voku\\' => 5,
         ),
+        'd' => 
+        array (
+            'digicatech\\ResellerClub\\' => 24,
+        ),
         'W' => 
         array (
             'Whoops\\' => 7,
@@ -196,6 +200,10 @@ class ComposerStaticInit6d251131d48ecfe7df0544750195ad15
         'voku\\' => 
         array (
             0 => __DIR__ . '/..' . '/voku/portable-ascii/src/voku',
+        ),
+        'digicatech\\ResellerClub\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/digicatech/resellerclub-php-api/src',
         ),
         'Whoops\\' => 
         array (
@@ -626,6 +634,7 @@ class ComposerStaticInit6d251131d48ecfe7df0544750195ad15
         'App\\Models\\LoginHistory' => __DIR__ . '/../..' . '/app/Models/LoginHistory.php',
         'App\\Models\\Registration' => __DIR__ . '/../..' . '/app/Models/Registration.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
+        'App\\Models\\UserInfo' => __DIR__ . '/../..' . '/app/Models/UserInfo.php',
         'App\\Models\\blogs' => __DIR__ . '/../..' . '/app/Models/blogs.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
@@ -6732,6 +6741,17 @@ class ComposerStaticInit6d251131d48ecfe7df0544750195ad15
         'Whoops\\Util\\Misc' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/Misc.php',
         'Whoops\\Util\\SystemFacade' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/SystemFacade.php',
         'Whoops\\Util\\TemplateHelper' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
+        'digicatech\\ResellerClub\\APIs\\Actions' => __DIR__ . '/..' . '/digicatech/resellerclub-php-api/src/APIs/Actions.php',
+        'digicatech\\ResellerClub\\APIs\\Billing' => __DIR__ . '/..' . '/digicatech/resellerclub-php-api/src/APIs/Billing.php',
+        'digicatech\\ResellerClub\\APIs\\Contacts' => __DIR__ . '/..' . '/digicatech/resellerclub-php-api/src/APIs/Contacts.php',
+        'digicatech\\ResellerClub\\APIs\\Customers' => __DIR__ . '/..' . '/digicatech/resellerclub-php-api/src/APIs/Customers.php',
+        'digicatech\\ResellerClub\\APIs\\Dns' => __DIR__ . '/..' . '/digicatech/resellerclub-php-api/src/APIs/Dns.php',
+        'digicatech\\ResellerClub\\APIs\\Domains' => __DIR__ . '/..' . '/digicatech/resellerclub-php-api/src/APIs/Domains.php',
+        'digicatech\\ResellerClub\\APIs\\Orders' => __DIR__ . '/..' . '/digicatech/resellerclub-php-api/src/APIs/Orders.php',
+        'digicatech\\ResellerClub\\APIs\\Products' => __DIR__ . '/..' . '/digicatech/resellerclub-php-api/src/APIs/Products.php',
+        'digicatech\\ResellerClub\\APIs\\Sslcert' => __DIR__ . '/..' . '/digicatech/resellerclub-php-api/src/APIs/Sslcert.php',
+        'digicatech\\ResellerClub\\Helper' => __DIR__ . '/..' . '/digicatech/resellerclub-php-api/src/Helper.php',
+        'digicatech\\ResellerClub\\ResellerClub' => __DIR__ . '/..' . '/digicatech/resellerclub-php-api/src/ResellerClub.php',
         'voku\\helper\\ASCII' => __DIR__ . '/..' . '/voku/portable-ascii/src/voku/helper/ASCII.php',
     );
 

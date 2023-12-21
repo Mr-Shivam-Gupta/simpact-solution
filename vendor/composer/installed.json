@@ -288,6 +288,56 @@
             "install-path": "../dflydev/dot-access-data"
         },
         {
+            "name": "digicatech/resellerclub-php-api",
+            "version": "1.4.0",
+            "version_normalized": "1.4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/digicatech/resellerclub-php-api.git",
+                "reference": "0dbe0e6b97e1b8ea9ed15da4ceb8aa4c484f2d7c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/digicatech/resellerclub-php-api/zipball/0dbe0e6b97e1b8ea9ed15da4ceb8aa4c484f2d7c",
+                "reference": "0dbe0e6b97e1b8ea9ed15da4ceb8aa4c484f2d7c",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-simplexml": "*",
+                "guzzlehttp/guzzle": "~7"
+            },
+            "time": "2023-12-08T21:43:46+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "digicatech\\ResellerClub\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Digicatech OÜ",
+                    "email": "info@digicatech.com"
+                },
+                {
+                    "name": "Digicatech TR",
+                    "email": "info@digicatech.com.tr"
+                }
+            ],
+            "description": "PHP SDK for ResellerClub API",
+            "support": {
+                "issues": "https://github.com/digicatech/resellerclub-php-api/issues",
+                "source": "https://github.com/digicatech/resellerclub-php-api/tree/1.4.0"
+            },
+            "install-path": "../digicatech/resellerclub-php-api"
+        },
+        {
             "name": "doctrine/inflector",
             "version": "2.0.8",
             "version_normalized": "2.0.8.0",

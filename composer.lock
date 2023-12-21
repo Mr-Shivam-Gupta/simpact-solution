@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6d251131d48ecfe7df0544750195ad15",
+    "content-hash": "3879110d17bdb8ca99360e30dd11654c",
     "packages": [
         {
             "name": "brick/math",
@@ -280,6 +280,53 @@
                 "source": "https://github.com/dflydev/dflydev-dot-access-data/tree/v3.0.2"
             },
             "time": "2022-10-27T11:44:00+00:00"
+        },
+        {
+            "name": "digicatech/resellerclub-php-api",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/digicatech/resellerclub-php-api.git",
+                "reference": "0dbe0e6b97e1b8ea9ed15da4ceb8aa4c484f2d7c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/digicatech/resellerclub-php-api/zipball/0dbe0e6b97e1b8ea9ed15da4ceb8aa4c484f2d7c",
+                "reference": "0dbe0e6b97e1b8ea9ed15da4ceb8aa4c484f2d7c",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-simplexml": "*",
+                "guzzlehttp/guzzle": "~7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "digicatech\\ResellerClub\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Digicatech OÜ",
+                    "email": "info@digicatech.com"
+                },
+                {
+                    "name": "Digicatech TR",
+                    "email": "info@digicatech.com.tr"
+                }
+            ],
+            "description": "PHP SDK for ResellerClub API",
+            "support": {
+                "issues": "https://github.com/digicatech/resellerclub-php-api/issues",
+                "source": "https://github.com/digicatech/resellerclub-php-api/tree/1.4.0"
+            },
+            "time": "2023-12-08T21:43:46+00:00"
         },
         {
             "name": "doctrine/inflector",

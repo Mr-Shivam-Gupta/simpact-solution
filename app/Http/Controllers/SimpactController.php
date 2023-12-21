@@ -16,9 +16,7 @@ use Jenssegers\Agent\Agent;
 use Illuminate\Support\Facades\DB;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Mail;
-// use App\Mail\MailSender;
-// use Exception;
-// use PhpParser\Node\Stmt\Return_;
+use digicatech\ResellerClub\ResellerClub;
 use Illuminate\Support\Facades\Session; 
  use Illuminate\Support\Facades\Auth;
  use Stevebauman\Location\Facades\Location;
@@ -326,42 +324,28 @@ public function customers(Request $request)
 
    public function checkDomain(Request $request)
    {
-      $url1 = 'https://domaincheck.httpapi.com/api/domains/available.json?auth-userid=172238&api-key=zphlhRJETuaSCbYNl0cJKF2Y0H7bX1hX&domain-name='.$request->domain.'&tlds=com&tlds=net&tlds=in&tlds=org&tlds=co.in';
-      // $domain =$request->domain;
-      // $tlds =$request->tlds;
-      // $queryParams1 = [
-      //     'auth-userid' => '172238',
-      //     'api-key' => 'zphlhRJETuaSCbYNl0cJKF2Y0H7bX1hX',
-      //     'domain-name' => $domain,
-      //     'tlds' => array('in','com','net'),
-      //     'tlds' => 'com',
-      //     'tlds' => 'net',
-      // ];
-      $response1 = Http::get($url1);
-      $responseData1 = $response1->json();
-      // return response()->json(['check_domains' => $responseData1]);
-    
-      $url2 = 'https://domaincheck.httpapi.com/api/domains/premium/available.xml?auth-userid=172238&api-key=zphlhRJETuaSCbYNl0cJKF2Y0H7bX1hX&key-word='.$request->domain.'&tlds=com&tlds=net&tlds=in&tlds=org&tlds=co.in&price-high=10000&no-of-results=20';
-      // $queryParams2 = [
-      //     'auth-userid' => '172238',
-      //     'api-key' => 'zphlhRJETuaSCbYNl0cJKF2Y0H7bX1hX',
-      //     'domain-name' => $request->domain,
-      //     'key-word' => 'shivam',
-      //     'tlds' => $request->tlds,
-      //     'price-high' => '10000',
-      //     'no-of-results' => '20',
-      // ];
-      $response2 = Http::get($url2);
-      $xmlResponse = $response2->body();
-      $xml = new \SimpleXMLElement($xmlResponse);
-      $premiumDomains = [];
-      foreach ($xml->entry as $entry) {
-          $domain = (string)$entry->string[0];
-          $price = (float)$entry->string[1];
-          $premiumDomains[] = ['domain' => $domain, 'price' => $price];
-      }
+
+      $resellerClub = new ResellerClub('172238', 'zphlhRJETuaSCbYNl0cJKF2Y0H7bX1hX',true);
+      $availability =  $resellerClub->domains()->available($request->domain, ['com', 'net','org','in','co.in']);
+      $premiumAilability = $resellerClub->domains()->premiumAvailable($request->domain, ['com', 'net','org','in','co.in']);
+      return response()->json(['availability' => $availability,'premium' => $premiumAilability]);
+
+      // $url1 = 'https://domaincheck.httpapi.com/api/domains/available.json?auth-userid=172238&api-key=zphlhRJETuaSCbYNl0cJKF2Y0H7bX1hX&domain-name='.$request->domain.'&tlds=com&tlds=net&tlds=in&tlds=org&tlds=co.in';
+
+      // $response1 = Http::get($url1);
+      // $responseData1 = $response1->json();
+      // $url2 = 'https://domaincheck.httpapi.com/api/domains/premium/available.xml?auth-userid=172238&api-key=zphlhRJETuaSCbYNl0cJKF2Y0H7bX1hX&key-word='.$request->domain.'&tlds=com&tlds=net&tlds=in&tlds=org&tlds=co.in&price-high=10000&no-of-results=20';
+      // $response2 = Http::get($url2);
+      // $xmlResponse = $response2->body();
+      // $xml = new \SimpleXMLElement($xmlResponse);
+      // $premiumDomains = [];
+      // foreach ($xml->entry as $entry) {
+      //     $domain = (string)$entry->string[0];
+      //     $price = (float)$entry->string[1];
+      //     $premiumDomains[] = ['domain' => $domain, 'price' => $price];
+      // }
    
-      return response()->json(['check_domains' => $responseData1,'premium_domains' => $premiumDomains]);
+      // return response()->json(['check_domains' => $responseData1,'premium_domains' => $premiumDomains]);
 
    }
 
