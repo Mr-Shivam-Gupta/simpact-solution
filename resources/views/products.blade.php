@@ -51,9 +51,10 @@
          <p>prvide some details </p>
       </h5>
    </div>
-   @if($user->costomer_id) hello @else 
+   @if($user->customer_id) hello @else 
    <form  id="add-customers"  method="post" class="d-flex">
       @csrf
+      <input type="hidden" name="user_id" value="@if($user) {{$user->id}} @endif">
       <div class="row card-body p-2">
          <div class="col-md-6 col-sm-12">
             <div class="col-12">
@@ -176,7 +177,7 @@
    </form>
 </div>
 @endif
-<script>
+<!-- <script>
    $(document).ready(function() {
      $('#add-customers').submit(function(e) {
        // Reset previous error messages
@@ -245,17 +246,17 @@
        field.parent().append(errorMessage);
      }
    });
-</script>
+</script> -->
 <script>
    $(document).ready(function () {
        $('#add-customers').submit(function (event) {
            event.preventDefault();
    
            // Perform client-side validation
-           if (!validateRequiredFields() || !validateEmail() || !validatePassword()) {
-               // Display error messages, if any
-               return;
-           }
+        //    if (!validateRequiredFields() || !validateEmail() || !validatePassword()) {
+        //        // Display error messages, if any
+        //        return;
+        //    }
    
            var formData = $(this).serialize();
            console.log(formData);
@@ -277,7 +278,7 @@
                    Swal.close();
                    if (response.success) {
                        const customerId = $(response.data).text();
-                       setCustomerIdAndSubmit(customerId);
+                    //    setCustomerIdAndSubmit(customerId);
                        Swal.fire({
                            icon: 'success',
                            title: 'Successful',
@@ -342,8 +343,8 @@
        //         }
        //     });
    
-           return isValid;
-       }
+    //        return isValid;
+    //    }
    
        function validateEmail() {
            var emailField = $('#input_email');
