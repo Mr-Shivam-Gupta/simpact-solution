@@ -40,7 +40,7 @@
             <div class="container">
                <div class="banner__wrapper">
                   <div class="banner__wrapper-content">
-                     <h2 class="banner__wrapper-content-title">Multilevel Marketing Platform</h2>
+                     <h2 class="banner__wrapper-content-title"> Multilevel Marketing Platform</h2>
                      <p class="banner__wrapper-content-txt">
                         Win more commissions by making more members and increase your capital. And you can earn more money by viewing advertisements on our site.
                      </p>

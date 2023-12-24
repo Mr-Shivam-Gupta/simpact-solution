@@ -16,8 +16,8 @@
             font-weight: bold;
             margin-bottom: 10px;
         }
-        .ii a[href] {
-            color: #fff;
+        .ii a {
+            color: #000;
         }
         .table {
             border-collapse: collapse;
@@ -34,8 +34,8 @@
             padding: 10px;
         }
         .table td {
-            background-color: #666;
-            color: #fff;
+            background-color: #edecec;
+            color: #000;
             padding: 10px;
         }
     </style>
