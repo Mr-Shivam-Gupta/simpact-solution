@@ -49,12 +49,14 @@ class AuthenticatedSessionController extends Controller
 	
         $request->session()->regenerate();
         $user = $request->user();
+
         if($user->is_admin ==1){
           $r=  RouteServiceProvider::ADMIN;
         } else{
-          $r=  RouteServiceProvider::HOME;
+          $r = RouteServiceProvider::HOME;
         } 
         return redirect()->intended($r);
+       
     }
 
     /**
@@ -67,7 +69,7 @@ class AuthenticatedSessionController extends Controller
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
-
-        return redirect('/');
+        
+        return redirect()->back();
     }
 }

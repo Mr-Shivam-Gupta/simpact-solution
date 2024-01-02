@@ -248,67 +248,7 @@ class simpactController extends Controller
    // {
    // }
    
-   public function modifyUser(Request $request)
-   {
-      echo 'hello';
-      //  $id = $request->user_id;
-      //  $user = User::find($id);
-      //  $responseData = null; 
-   
-      //  if ($user) {
-      //      $user->costomer_id = $request->customer_id;
-      //      $user->save();
-      //      $user_info = UserInfo::where('user_id', $id)->first();
-      //      if ($user_info) {
-      //          $user_info->companyname = $request->companyname_id;
-      //          $user_info->address = $request->address1_id;
-      //          $user_info->city = $request->city_id; 
-      //          $user_info->zip = $request->zip_id; 
-      //          $user_info->country = $request->country_id;
-      //          $user_info->state = $request->state_id;
-      //          $user_info->phone = $request->phone_id;
-      //          $user_info->password = $request->password;
-      //          $user_info->save();
-      //      } else {
-      //          $new_user_info = new UserInfo();
-      //          $new_user_info->user_id = $id;
-      //          $new_user_info->companyname = $request->companyname_id;
-      //          $new_user_info->address = $request->address1_id;
-      //          $new_user_info->city = $request->city_id;
-      //          $new_user_info->zip = $request->zip_id; 
-      //          $new_user_info->country = $request->country_id;
-      //          $new_user_info->state = $request->state_id;
-      //          $new_user_info->phone = $request->phone_id;
-      //          $new_user_info->password = $request->password;
-                 
-      //          $url = 'https://test.httpapi.com/api/contacts/add.json?';
-      //          $queryParams = [
-      //              'auth-userid' => '172238',
-      //              'api-key' => 'zphlhRJETuaSCbYNl0cJKF2Y0H7bX1hX',
-      //              'name' => $request->name_id,
-      //              'company' => $request->companyname_id,
-      //              'email' => $request->email_id,
-      //              'address-line-1' => $request->address1_id,
-      //              'city' => $request->city_id,
-      //              'country' => $request->country_id,
-      //              'zipcode' => $request->zip_id,
-      //              'phone-cc' => +91,
-      //              'phone' => $request->phone_id,
-      //              'customer-id' => $request->customer_id,
-      //              'type' => 'Contact',
-      //          ];
-      //          $response = Http::get($url, $queryParams);
-      //          $responseData = $response->json();
-      //          // dd($responseData);
-      //          $new_user_info->contact_id = $responseData;
-      //          $new_user_info->save();
-      //      }
-           
-      //      return response()->json(['success' => true, 'contact' => $responseData, 'message' => 'User modified successfully']);
-      //  } else {
-      //      return response()->json(['success' => false, 'message' => 'User not found']);
-      //  }
-   }
+
 
 public function customers(Request $request)
 {
@@ -338,55 +278,40 @@ public function customers(Request $request)
    if (is_int($customers)) {
       $contact = $resellerClub->contacts()->add($name, $company, $username, $address, $city, $country, $zipCode, $phoneCC, $phone, $customers, 'Contact', '', '', $state, '', '', $attrs = []);
    }
-   
    if (is_int($customers) && is_int($contact) && $customers > 0 && $contact > 0) {
+      //saving customarId and contactId 
        $id = $request->user_id;
        $user = User::find($id);
        $user->customer_id = $customers;
        $user->contact_id = $contact;
        $user->save();
-   
+       // submiting data into userInfo
+      $user_info = new UserInfo();
+      $user_info->user_id = $id;
+      $user_info->phone = $id;
+      $user_info->country = $id;
+      $user_info->state = $id;
+      $user_info->city = $id;
+      $user_info->zip = $id;
+      $user_info->address = $id;
+      $user_info->companyname = $id;
+      $user_info->password = $id;
+      $user_info->customer_id = $id;
+      $user_info->contact_id = $id;
+      $user_info->save();
+
        return response()->json(['customer_id' => $customers, 'contact_id' => $contact]);
    } else {
-       
-       return response()->json(['error' => 'Failed to create customer or contact.','customer_id' => $customers, 'contact_id' => $contact]);
+       return response()->json(['error' => 'Failed to create customer or contact.','customer_id' => $customers]);
    }
-
-   //  $url = 'https://test.httpapi.com/api/customers/v2/signup.xml?auth-userid=172238&api-key=zphlhRJETuaSCbYNl0cJKF2Y0H7bX1hX&username='.$request->email.'&passwd='.$request->passwd.'&name='.$request->name.'&company='.$request->companyname.'&address-line-1='.$request->address1.'&city='.$request->city.'&state='.$request->state.'&country='.$request->country.'&zipcode='.$request->zip.'&phone-cc='.$request->telnocc.'&phone='.$request->telno.'&lang-pref=en';
-   //  $response = Http::post($url);
-   //  if ($response->successful()) {
-   //      $xmlResponse = $response->body();
-   //      return   response()->json(['success' => true, 'message' => 'API request successful', 'data' => $xmlResponse,]);
-   //  } else {
-   //      $errorMessage = $response->body();
-   //      return response()->json(['success' => false, 'message' => 'API request failed', 'error' => $errorMessage]);
-   //  }
 }
-
    public function checkDomain(Request $request)
    {
-
+      
       $resellerClub = new ResellerClub('172238', 'zphlhRJETuaSCbYNl0cJKF2Y0H7bX1hX',true);
       $availability =  $resellerClub->domains()->available($request->domain, ['com', 'net','org','in','co.in']);
-      $premiumAilability = $resellerClub->domains()->premiumAvailable($request->domain, ['com', 'net','org','in','co.in']);
-      return response()->json(['availability' => $availability,'premium' => $premiumAilability]);
-
-      // $url1 = 'https://domaincheck.httpapi.com/api/domains/available.json?auth-userid=172238&api-key=zphlhRJETuaSCbYNl0cJKF2Y0H7bX1hX&domain-name='.$request->domain.'&tlds=com&tlds=net&tlds=in&tlds=org&tlds=co.in';
-
-      // $response1 = Http::get($url1);
-      // $responseData1 = $response1->json();
-      // $url2 = 'https://domaincheck.httpapi.com/api/domains/premium/available.xml?auth-userid=172238&api-key=zphlhRJETuaSCbYNl0cJKF2Y0H7bX1hX&key-word='.$request->domain.'&tlds=com&tlds=net&tlds=in&tlds=org&tlds=co.in&price-high=10000&no-of-results=20';
-      // $response2 = Http::get($url2);
-      // $xmlResponse = $response2->body();
-      // $xml = new \SimpleXMLElement($xmlResponse);
-      // $premiumDomains = [];
-      // foreach ($xml->entry as $entry) {
-      //     $domain = (string)$entry->string[0];
-      //     $price = (float)$entry->string[1];
-      //     $premiumDomains[] = ['domain' => $domain, 'price' => $price];
-      // }
-   
-      // return response()->json(['check_domains' => $responseData1,'premium_domains' => $premiumDomains]);
+      // $premiumAilability = $resellerClub->domains()->premiumAvailable($request->domain, ['com', 'net','org','in','co.in']);
+      return response()->json(['availability' => $availability]);
 
    }
 
